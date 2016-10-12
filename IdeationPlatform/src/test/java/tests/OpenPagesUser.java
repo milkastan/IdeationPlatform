@@ -6,22 +6,21 @@ import org.testng.annotations.Test;
 
 import common.DataproviderClass;
 
-public class OpenPagesSysAdmin extends BaseTest{
+public class OpenPagesUser extends BaseTest{
 	@BeforeTest
 	public void setUp() {
-    	System.out.println("Ideation Platform - Open all pages as system administrator!");
+    	System.out.println("Ideation Platform - Open all pages as User!");
     	System.out.println("--------------------------------------------");
     	navigatetoIdeation ();
     	//ResizeBrowserWindow(760, 1280);
-    	
-    }
+     }
 	
     @AfterTest
     public void ShutDown() {
     	System.out.println("Finished Ideation Platform test!");
     }
     
-    @Test(dataProvider="Administrator",dataProviderClass=DataproviderClass.class)
+    @Test(dataProvider="User1",dataProviderClass=DataproviderClass.class)
     public void CreateNewCampaign(String uname, String pass) {
     	home=SignIn(uname,pass);
     	//print all visible menus for user
@@ -39,18 +38,10 @@ public class OpenPagesSysAdmin extends BaseTest{
     	}
     	dashb.FilterActiveCampaigns(1);
     	dashb.PrintDashboardCampaignsInfo();  
-    	//Select menu Private Circles    
-    	home.navigatetoPrivateCircles();
     	//Select menu Social Networks
-    	home.navigatetoSocialNetworks(4);
-    	//Select Administration
-    	adm=home.navigatetoAdministration();
-    	adm.SelectManageCircles();
-    	adm=home.navigatetoAdministration();
-    	adm.SelectUsersAdministration();
+    	home.navigatetoSocialNetworks(2);
     	//Select user profile
     	prof=home.SelectUserProfile();
     	prof.PrintUserDashboardInfo();
-    	//home.SelectLogout();
-    }	
+     }	
 }

@@ -56,13 +56,13 @@ public class Home extends Base{
 		UserDD.click();
 		WaitForVisibility(By.className("dropdown open"),1);	
 		MenuMyProfile.click();
-		WaitForVisibility(By.id("MainCT_lblMobileTitle"),1);
+		WaitForVisibility(By.id("MainCT_lblName"),1);
 		}
 		System.out.println("Selected menu My Profile");
+		System.out.println("-------------------------------------");
 		return new UserProfile();
 	}
 	
-
 	public Login SelectLogout() {
 		if (MenuBtn.isDisplayed()) {
 			MenuBtn.click();
@@ -101,6 +101,15 @@ public class Home extends Base{
 		}
 	}
 
+	public void PrintAllMenuItems(){
+		List<WebElement> mnu = Browser.driver.findElements(By.xpath("//*[@id='ucMenu_topnav']/li/a"));
+		System.out.println("Visible menus for user");
+		System.out.println("-------------------------");
+		for (int i=0; i< mnu.size(); i++) {
+			System.out.println(mnu.get(i).getText());
+		}
+	}
+	
 
     public Home navigatetoHome() {
     	System.out.println("Selected menu Home");
@@ -123,6 +132,7 @@ public class Home extends Base{
     	System.out.println("-------------------------------------");
      	return new Dashboard();
     }
+    
     public Circles navigatetoPrivateCircles() {
     	System.out.println("Selected menu Private Circles");
         	SelectMainMenu(3);
@@ -137,9 +147,11 @@ public class Home extends Base{
          	return new Circles();
     }
     
-    public Discussions navigatetoSocialNetworks() {
+    public Discussions navigatetoSocialNetworks(int i) {
     	System.out.println("Selected menu Social Networks");
-    	SelectMainMenu(4);
+    	//i=4 for Admin and CC
+    	//i=2 for user
+    	SelectMainMenu(i);
     	WaitForVisibility(By.id("MainCT_ucManageCircles_btnAdd"),3);
     	System.out.println("-------------------------------------");
     	try {
@@ -187,6 +199,7 @@ public class Home extends Base{
     	System.out.println("Select Home menu Home/My ideas");
     	MenuMyIdeasList.click();
     	WaitForVisibility(By.id("MainCT_ideaListRecent_lvIdeas_layoutTemplate"),3);
+    	System.out.println("-------------------------------------");
     	return this;
     }
     

@@ -99,18 +99,21 @@ public class IPTest1 extends BaseTest{
 	   ide.DeleteIdeaFromEdit();
 	   ide.FollowIdea();
 }*/
-    @Test(dataProvider="Administrator",dataProviderClass=DataproviderClass.class)
+    @Test(dataProvider="User1",dataProviderClass=DataproviderClass.class)
     public void TestIdeationCircles(String uname, String pass) {
     	home=SignIn(uname,pass);
+    	home.navigatetoSocialNetworks(2);
+    	prof=home.SelectUserProfile();
     	//home.CheckCampainsNumber();
-    	dashb=home.navigatetoDashboard();
+    	//dashb=home.navigatetoDashboard();
     	//dashb.PrintDashboardCampaignsInfo();
-    	dashb.FilterOrgCampaigns(1);
-
+    	//dashb.FilterOrgCampaigns(1);
+    	//home.SelectLogout();
     	//adm=home.navigatetoAdministration();
     	//cir=adm.SelectManageCircles();
     	//cir.EditCircle("NewCircle");
     	//cir.DeleteCircle("NewCircle");
+    	 //home.PrintAllMenuItems();
     	
     }
     

@@ -6,10 +6,10 @@ import org.testng.annotations.Test;
 
 import common.DataproviderClass;
 
-public class OpenPagesSysAdmin extends BaseTest{
+public class OpenPagesCC extends BaseTest{
 	@BeforeTest
 	public void setUp() {
-    	System.out.println("Ideation Platform - Open all pages as system administrator!");
+    	System.out.println("Ideation Platform - Open all pages as Company Creator!");
     	System.out.println("--------------------------------------------");
     	navigatetoIdeation ();
     	//ResizeBrowserWindow(760, 1280);
@@ -21,7 +21,7 @@ public class OpenPagesSysAdmin extends BaseTest{
     	System.out.println("Finished Ideation Platform test!");
     }
     
-    @Test(dataProvider="Administrator",dataProviderClass=DataproviderClass.class)
+    @Test(dataProvider="CompanyCreator",dataProviderClass=DataproviderClass.class)
     public void CreateNewCampaign(String uname, String pass) {
     	home=SignIn(uname,pass);
     	//print all visible menus for user
@@ -43,14 +43,8 @@ public class OpenPagesSysAdmin extends BaseTest{
     	home.navigatetoPrivateCircles();
     	//Select menu Social Networks
     	home.navigatetoSocialNetworks(4);
-    	//Select Administration
-    	adm=home.navigatetoAdministration();
-    	adm.SelectManageCircles();
-    	adm=home.navigatetoAdministration();
-    	adm.SelectUsersAdministration();
     	//Select user profile
     	prof=home.SelectUserProfile();
     	prof.PrintUserDashboardInfo();
-    	//home.SelectLogout();
-    }	
+     }	
 }
