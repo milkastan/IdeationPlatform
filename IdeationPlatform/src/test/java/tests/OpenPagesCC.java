@@ -9,6 +9,7 @@ import common.DataproviderClass;
 public class OpenPagesCC extends BaseTest{
 	@BeforeTest
 	public void setUp() {
+		PrintCurrentDateTime();
     	System.out.println("Ideation Platform - Open all pages as Company Creator!");
     	System.out.println("--------------------------------------------");
     	navigatetoIdeation ();
@@ -19,6 +20,8 @@ public class OpenPagesCC extends BaseTest{
     @AfterTest
     public void ShutDown() {
     	System.out.println("Finished Ideation Platform test!");
+    	PrintCurrentDateTime();
+    	System.out.println("--------------------------------");
     }
     
     @Test(dataProvider="CompanyCreator",dataProviderClass=DataproviderClass.class)
@@ -38,7 +41,10 @@ public class OpenPagesCC extends BaseTest{
     		 dashb.PrintDashboardCampaignsInfo();
     	}
     	dashb.FilterActiveCampaigns(1);
-    	dashb.PrintDashboardCampaignsInfo();  
+    	for (int i=0; i<4; i++) {
+      		 dashb.FilterOrgCampaigns(i);
+      		 dashb.PrintDashboardCampaignsInfo();
+      	}  
     	//Select menu Private Circles    
     	home.navigatetoPrivateCircles();
     	//Select menu Social Networks
@@ -46,5 +52,7 @@ public class OpenPagesCC extends BaseTest{
     	//Select user profile
     	prof=home.SelectUserProfile();
     	prof.PrintUserDashboardInfo();
+    	prof.SelectIdeaCommentsTAB(1);
+    	prof.SelectIdeaCommentsTAB(0);
      }	
 }

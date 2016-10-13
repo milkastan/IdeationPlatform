@@ -1,0 +1,144 @@
+[TestNG] Running:
+  C:\Users\milka.stankova\AppData\Local\Temp\testng-eclipse--1832835070\testng-customsuite.xml
+
+Current date&time: 13/10/2016 11:02:06
+Ideation Platform - Open all pages as User!
+--------------------------------------------
+Starting ChromeDriver 2.23.409699 (49b0fa931cda1caad0ae15b7d1b68004acd05129) on port 47639
+Only local connections are allowed.
+user:icb2user1, password:123456 logged in Ideation Platform
+--------------------------------------------
+Ideation Platform Home page is opened
+**** Login time: 1597
+Visible menus for user
+-------------------------
+Home
+Dashboard
+Social Networks
+
+
+
+Selected filter for campaigns :Active
+-------------------------------------
+Number if campaigns is: 14
+Number of campaigns in the list is equal to dashboard number (Campaigns I am invited to)
+Ideation Home Campaigns Dashboard Info
+-------------------------------------
+My Campaigns:14
+My Ideas:5
+My Comments:6
+My Average rating:3.5
+-------------------------------------
+Selected filter for campaigns :All
+-------------------------------------
+Number if campaigns is: 41
+Number of campaigns in the list is equal to dashboard number (Campaigns I am invited to)
+Ideation Home Campaigns Dashboard Info
+-------------------------------------
+My Campaigns:41
+My Ideas:36
+My Comments:36
+My Average rating:3.3
+-------------------------------------
+Selected filter for campaigns :Inactive
+-------------------------------------
+Number if campaigns is: 27
+Number of campaigns in the list is equal to dashboard number (Campaigns I am invited to)
+Ideation Home Campaigns Dashboard Info
+-------------------------------------
+My Campaigns:27
+My Ideas:31
+My Comments:30
+My Average rating:3.0
+-------------------------------------
+Selected filter for campaigns :Upcoming
+-------------------------------------
+Number if campaigns is: 0
+Number of campaigns in the list is equal to dashboard number (Campaigns I am invited to)
+Ideation Home Campaigns Dashboard Info
+-------------------------------------
+My Campaigns:0
+My Ideas:0
+My Comments:0
+My Average rating:0
+-------------------------------------
+Select Home menu Home/Recent ideas
+-------------------------------------
+Select Home menu Home/My ideas
+-------------------------------------
+Selected menu Dashboard
+-------------------------------------
+Selected filter :Entire organization
+-------------------------------------
+Ideation Dashboard Campaigns Info
+My Campaigns:47
+My Ideas:7406
+My Comments:10807
+My Average rating:520
+-------------------------------------
+Selected filter :My campaigns
+-------------------------------------
+Ideation Dashboard Campaigns Info
+My Campaigns:2
+My Ideas:6
+My Comments:5
+My Average rating:5
+-------------------------------------
+Selected filter :Campaings I am invited to
+-------------------------------------
+Ideation Dashboard Campaigns Info
+My Campaigns:41
+My Ideas:7133
+My Comments:10553
+My Average rating:519
+-------------------------------------
+Selected filter :Followed campaigns
+-------------------------------------
+Ideation Dashboard Campaigns Info
+My Campaigns:2
+My Ideas:271
+My Comments:253
+My Average rating:297
+-------------------------------------
+Selected filter :Active Campaigns
+-------------------------------------
+Ideation Dashboard Campaigns Info
+My Campaigns:0
+My Ideas:0
+My Comments:0
+My Average rating:0
+-------------------------------------
+Selected menu Social Networks
+-------------------------------------
+Selected menu My Profile
+-------------------------------------
+User Dashboard Info
+-------------------------------------
+User last login: 13/10/2016
+Started campaigns: 0
+Ideas submitted: 37
+Comments submitted: 36
+Ratings made: 4
+-------------------------------------
+Finished Ideation Platform test!
+Current date&time: 13/10/2016 11:02:47
+--------------------------------
+PASSED: CreateNewCampaign("icb2user1", "123456")
+
+===============================================
+    Default test
+    Tests run: 1, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 1, Failures: 0, Skips: 0
+===============================================
+
+[TestNG] Time taken by [FailedReporter passed=0 failed=0 skipped=0]: 6 ms
+[TestNG] Time taken by org.testng.reporters.EmailableReporter2@13fee20c: 5 ms
+[TestNG] Time taken by org.testng.reporters.SuiteHTMLReporter@1a407d53: 27 ms
+[TestNG] Time taken by org.testng.reporters.JUnitReportReporter@17550481: 4 ms
+[TestNG] Time taken by org.testng.reporters.jq.Main@21bcffb5: 31 ms
+[TestNG] Time taken by org.testng.reporters.XMLReporter@dfd3711: 5 ms

@@ -8,16 +8,12 @@ import java.io.PrintStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebElement;
 
 import pages.Browser;
-import pages.Campaigns;
 
 public class Common {
 	private static String filepath ="D:\\00-DISK-D\\WebDriver PXC Projects\\";
@@ -25,7 +21,6 @@ public class Common {
 	
 	public Common() {
 	}
-
 
      //click on element by JavascriptExecutor 
 	//((JavascriptExecutor) Browser.driver).executeScript("arguments[0].click();", el);
@@ -44,7 +39,7 @@ public class Common {
 		}
     }
 	
-	 public void PrintCurrentDateTime(String format)
+/*	 public void PrintCurrentDateTime(String format)
 	 {
 		 //Create object of SimpleDateFormat class and decide the format
          DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd");
@@ -54,7 +49,7 @@ public class Common {
          String date1 = dateFormat.format(date);
          //return string with current date and time             
          System.out.println("Current date&time: "+date1);
-	 }
+	 }*/
 	
 		public static void testTakesScreenshot() throws Exception {
 			File scrFile = ((TakesScreenshot) Browser.driver)
@@ -62,7 +57,7 @@ public class Common {
 			FileUtils.copyFile(scrFile, new File("D:\\00-DISK-D\\WebDriver PXC Projects\\CPDLocal\\main_page.png"));
 		}
 
-		public String GetCurrentDate(){
+		public static String GetCurrentDate(){
 			DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy ");
 			//get current date time with Date()
 			 Date date = new Date();
@@ -72,5 +67,6 @@ public class Common {
 			return date1;
 		}
 		
+
 		
 }

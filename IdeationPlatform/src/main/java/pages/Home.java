@@ -253,9 +253,11 @@ public class Home extends Base{
     }
     
     public Campaigns ViewFirstCampaign(){
+    	System.out.println("View first campaign and show campaign details");
     	WebElement cm = Browser.driver.findElement(By.id("MainCT_lvCampaigns_ctrl0_lblCampTitle_0"));                                       
     	cm.click();
     	WaitForVisibility(By.id("MainCT_lblCampaignName"),30);
+    	System.out.println("-------------------------------------------");
        	return new Campaigns();
     }
     

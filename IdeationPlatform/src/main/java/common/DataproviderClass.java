@@ -27,4 +27,11 @@ public class DataproviderClass {
 			};
      }
 	
+	@DataProvider(name="ExtUser1")
+	public  static Object[][]  getExtUser1(){
+		return new Object[][] { 
+				{"extuser7","123456"}  
+			};
+     }
+	
 }

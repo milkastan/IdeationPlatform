@@ -24,6 +24,13 @@ public class Campaigns extends Base{
 	WebElement StartDateField;
 	@FindBy(how=How.ID, using="MainCT_dpEndDate_theTextBox")
 	WebElement EndDateField;
+	@FindBy(how=How.ID, using="MainCT_tbAdmins")
+	WebElement CampAdminField;
+	@FindBy(how=How.ID, using="MainCT_clbTags_listbox_chosen")
+	WebElement CampTagField;
+	@FindBy(how=How.XPATH, using="//*[@name='ctl00$MainCT$clbTags$btnAdd']")
+	WebElement AddTagBtn;
+	
 	//Campaign Actions
 	@FindBy(how=How.ID, using="RightCT_hlnkEditCampaign")
 	WebElement EditCampaign;
@@ -44,6 +51,7 @@ public class Campaigns extends Base{
 	WebElement CampTitle;
 	@FindBy(how=How.XPATH, using="//*[@id='lblDescription']/text()")
 	WebElement CampDesc;
+	
 	//Create new idea fields
 	@FindBy(how=How.ID, using="MainCT_chbPrivacy")
 	WebElement IdeaPrivacy;
@@ -60,6 +68,18 @@ public class Campaigns extends Base{
 	@FindBy(how=How.XPATH, using="//*[@id='MainCT_tabCampaigns']/div/div/div/div")
 	WebElement HomeCampNum;
 	
+	//Campaign dashboard statistics
+	@FindBy(how=How.ID, using="RightCT_ucCampaignCounts_repStats_lblStatValue_0")
+	WebElement CampViews;
+	@FindBy(how=How.ID, using="RightCT_ucCampaignCounts_repStats_lblStatValue_1")
+	WebElement CampFollowers;
+	@FindBy(how=How.ID, using="RightCT_ucCampaignCounts_repStats_lblStatValue_2")
+	WebElement CampIdeas;
+	@FindBy(how=How.ID, using="RightCT_ucCampaignCounts_repStats_lblStatValue_3")
+	WebElement CampComments;
+	@FindBy(how=How.ID, using="RightCT_ucCampaignCounts_repStats_lblStatValue_4")
+	WebElement CampAvgRating;
+	
 	
 	//input[@type='text'] - TAG is nd input field
 
@@ -69,25 +89,69 @@ public class Campaigns extends Base{
 		PageFactory.initElements(Browser.driver, this);
 	}
 	
+	public String GetCampaignViews() {
+    	String d = CampViews.getText();
+    	return d;
+    }
+    
+    public String GetCampaignFollowers() {
+    	String d = CampFollowers.getText();
+    	return d;
+    }
+    
+    public String GetCampaignsIdeas() {
+    	String d = CampIdeas.getText();
+    	return d;
+    }
+    
+    public String GetCampComments() {
+    	String d = CampComments.getText();
+    	return d;
+    }
+    
+     public String GetCampaignAvgRating() {
+    	String d = CampAvgRating.getText();
+    	return d;
+    }
+    
+	  public void PrintCampaignDashboardInfo() {
+	    	System.out.println("User Dashboard Info");
+	    	System.out.println("-------------------------------------");
+	    	System.out.println("Campaign Views: "+GetCampaignViews());
+	     	System.out.println("Campaign Followers: "+GetCampaignFollowers());
+	     	System.out.println("Campaigns Ideas: "+GetCampaignsIdeas());
+	     	System.out.println("Campaign Comments: "+GetCampComments());
+	     	System.out.println("Campaign Avg Rating: "+GetCampaignAvgRating());
+	     	System.out.println("-------------------------------------");
+	    }
+	
 	public Campaigns FillinNewCampaign(String campn, String campdes, String sdate, String edate) {
 		List<WebElement> txt = Browser.driver.findElements(By.xpath("//td[@class='k-editable-area']/iframe"));
+		List<WebElement> bbtns = Browser.driver.findElements(By.xpath("//*[@class='k-tool-icon k-bold']"));
+		List<WebElement> ibtns = Browser.driver.findElements(By.xpath("//*[@class='k-tool-icon k-italic']"));
 		txt.get(0).click();
 		txt.get(0).sendKeys(campn);
-		List<WebElement> bbtns = Browser.driver.findElements(By.xpath("//*[@class='k-tool-icon k-bold']"));
-		bbtns.get(1).click();
-		List<WebElement> ibtns = Browser.driver.findElements(By.xpath("//*[@class='k-tool-icon k-italic']"));
-		ibtns.get(1).click();
+		bbtns.get(1).click();   // bold button
 		txt.get(1).click();
-		txt.get(1).sendKeys(campdes);
+		txt.get(1).sendKeys("Description of campaign "+campn);
 		txt.get(1).sendKeys(Keys.RETURN);
 		DescBulletsBtn.click();
-		txt.get(1).sendKeys("Campaing description 1");
+		ibtns.get(1).click();
+		txt.get(1).sendKeys("Description of campaign");
 		txt.get(1).sendKeys(Keys.RETURN);
-		txt.get(1).sendKeys("Campaing description 2");
+		txt.get(1).sendKeys("Description of campaign");
+		txt.get(1).sendKeys(Keys.RETURN);
 		StartDateField.sendKeys(sdate);
 		EndDateField.sendKeys(edate);
+		
 		return this;
 	}
+	
+	//am = admin emails
+    public Campaigns AddCampaignAdministgrator(String am) {
+    	CampAdminField.sendKeys(am);
+    	return this;
+    }
 
 /*	public Campaigns FillTitleDescription() {
 		List<WebElement> txt = Browser.driver.findElements(By.xpath("//td[@class='k-editable-area']/iframe"));
@@ -102,12 +166,12 @@ public class Campaigns extends Base{
 	
 	public Circles FindUserstoCampaigClick() {
 		FindUsers.click();
-		WaitForVisibility(By.id("cboxTitle"),3);
 		Browser.SwitchToFrame();
+		WaitForVisibility(By.id("cboxTitle"),3);
 		return new Circles();
 	}
 	
-	public Campaigns SubmitCampaign(){
+	public Campaigns PublishCampaign(){
 		if (SubmitCampaign.isDisplayed()){
 		    SubmitCampaign.click();
 		}
@@ -191,7 +255,7 @@ public class Campaigns extends Base{
     }
     
     public Campaigns FollowCampaign(){
-    	System.out.println(FollowCampaign.getText());
+    	System.out.println("Click on Follow Campaign!");
     	if (FollowCampaign.getText().equalsIgnoreCase("Follow Campaign")) {
     		FollowCampaign.click();
     	while (!(FollowCampaign.getText().equalsIgnoreCase("Unfollow Campaign")))
@@ -209,9 +273,21 @@ public class Campaigns extends Base{
     	}  
     	return this;
     }
+    
+    public Campaigns CheckFollowCampaignNum(String fc1, String fc2) {
+        if (Integer.parseInt(fc2)==(Integer.parseInt(fc1)+1)) {
+        	System.out.println("Followed campaing number on dashboard has increased by one after Follow Campaign!");
+        }else if (Integer.parseInt(fc2)==(Integer.parseInt(fc1)-1)) {
+        	System.out.println("Followed campaing number on dashboard has decreased by one by Unfollow Campaign!");
+        }else {
+        	System.out.println("Dashboard Followed is not updated!");
+        }
+        System.out.println("-------------------------------------------");
+    	return this;
+    }
 
     public Campaigns UnfollowCampaign(){
-    	System.out.println(FollowCampaign.getText());
+    	System.out.println("Click on Unfollow Campaign!");
     	if (FollowCampaign.getText().equalsIgnoreCase("Unfollow Campaign")) {
     		FollowCampaign.click();
     	while (!(FollowCampaign.getText().equalsIgnoreCase("Follow Campaign")))

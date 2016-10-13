@@ -9,6 +9,7 @@ import common.DataproviderClass;
 public class OpenPagesUser extends BaseTest{
 	@BeforeTest
 	public void setUp() {
+		PrintCurrentDateTime();
     	System.out.println("Ideation Platform - Open all pages as User!");
     	System.out.println("--------------------------------------------");
     	navigatetoIdeation ();
@@ -18,6 +19,8 @@ public class OpenPagesUser extends BaseTest{
     @AfterTest
     public void ShutDown() {
     	System.out.println("Finished Ideation Platform test!");
+    	PrintCurrentDateTime();
+    	System.out.println("--------------------------------");
     }
     
     @Test(dataProvider="User1",dataProviderClass=DataproviderClass.class)
@@ -37,11 +40,16 @@ public class OpenPagesUser extends BaseTest{
     		 dashb.PrintDashboardCampaignsInfo();
     	}
     	dashb.FilterActiveCampaigns(1);
-    	dashb.PrintDashboardCampaignsInfo();  
+    	for (int i=0; i<4; i++) {
+   		 dashb.FilterOrgCampaigns(i);
+   		 dashb.PrintDashboardCampaignsInfo();
+   	} 
     	//Select menu Social Networks
     	home.navigatetoSocialNetworks(2);
     	//Select user profile
     	prof=home.SelectUserProfile();
     	prof.PrintUserDashboardInfo();
+    	prof.SelectIdeaCommentsTAB(1);
+    	prof.SelectIdeaCommentsTAB(0);
      }	
 }

@@ -99,6 +99,8 @@ public class Circles extends Base{
 	}
 	
 	public Circles SelectCircletoCampaign(String cname) {
+		Browser.SwitchToFrame();
+		SelectCirclesMenu();
 		FilterTextField.sendKeys(cname);
 		FilterBtn.click();
 		FirstCheckbox.click();
@@ -106,6 +108,7 @@ public class Circles extends Base{
 	 	//circlecheck.click();
 	 	AddtocampaignBtn.click();
 	 	WaitForVisibility(By.xpath("//div[@class='container-fluid']//text()='"+cname+"'"),3);
+	 	SaveCircletoCampaign();
 	 	return this;
 	}
 	

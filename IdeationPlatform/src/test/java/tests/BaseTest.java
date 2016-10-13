@@ -1,5 +1,9 @@
 package tests;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -31,6 +35,7 @@ public class BaseTest {
     ExcelDataConfig camps = new ExcelDataConfig("D:\\00-DISK-D\\WebDriver PXC Projects\\IdeationPlatform\\campaigns.xlsx"); 	 
     ExcelDataConfig users = new ExcelDataConfig("D:\\00-DISK-D\\WebDriver PXC Projects\\IdeationPlatform\\UsersDataExcel.xlsx"); 			 
 	GenerateData gendata = new GenerateData();
+	private Date date;
 	
 	public void RunBrowser() {
 		//Browser.initFF();
@@ -72,5 +77,19 @@ public class BaseTest {
 	public void QuitBrowser(){
 		Browser.quit();
 	}
+	
+	 public void PrintCurrentDateTime()
+	 {
+		 //Create object of SimpleDateFormat class and decide the format
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        //get current date with Date()
+        this.date = new Date();
+        
+        //Now format the date
+        String date1 = dateFormat.format(date);
+        //return string with current date and time             
+        System.out.println("Current date&time: "+date1);
+	 }
+	
 	
 }

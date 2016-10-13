@@ -6,16 +6,15 @@ import org.testng.annotations.Test;
 
 import common.DataproviderClass;
 
-public class OpenPagesSysAdmin extends BaseTest{
+public class OpenPagesExternalUser extends BaseTest{
 	@BeforeTest
 	public void setUp() {
 		PrintCurrentDateTime();
-    	System.out.println("Ideation Platform - Open all pages as system administrator!");
+    	System.out.println("Ideation Platform - Open all pages as User!");
     	System.out.println("--------------------------------------------");
     	navigatetoIdeation ();
     	//ResizeBrowserWindow(760, 1280);
-    	
-    }
+     }
 	
     @AfterTest
     public void ShutDown() {
@@ -24,7 +23,7 @@ public class OpenPagesSysAdmin extends BaseTest{
     	System.out.println("--------------------------------");
     }
     
-    @Test(dataProvider="Administrator",dataProviderClass=DataproviderClass.class)
+    @Test(dataProvider="ExtUser1",dataProviderClass=DataproviderClass.class)
     public void CreateNewCampaign(String uname, String pass) {
     	home=SignIn(uname,pass);
     	//print all visible menus for user
@@ -36,29 +35,21 @@ public class OpenPagesSysAdmin extends BaseTest{
     	home.SelectMenuMyIdeasList();
     	//Change Dashboard filters and get numbers for campaigns
     	dashb=home.navigatetoDashboard();
-    	for (int i=0; i<4; i++) {
+    	for (int i=0; i<2; i++) {
     		 dashb.FilterOrgCampaigns(i);
     		 dashb.PrintDashboardCampaignsInfo();
     	}
     	dashb.FilterActiveCampaigns(1);
-    	for (int i=0; i<4; i++) {
-      		 dashb.FilterOrgCampaigns(i);
-      		 dashb.PrintDashboardCampaignsInfo();
-      	} 
-    	//Select menu Private Circles    
-    	home.navigatetoPrivateCircles();
+    	for (int i=0; i<2; i++) {
+   		 dashb.FilterOrgCampaigns(i);
+   		 dashb.PrintDashboardCampaignsInfo();
+   	} 
     	//Select menu Social Networks
-    	home.navigatetoSocialNetworks(4);
-    	//Select Administration
-    	adm=home.navigatetoAdministration();
-    	adm.SelectManageCircles();
-    	adm=home.navigatetoAdministration();
-    	adm.SelectUsersAdministration();
+    	home.navigatetoSocialNetworks(2);
     	//Select user profile
     	prof=home.SelectUserProfile();
     	prof.PrintUserDashboardInfo();
     	prof.SelectIdeaCommentsTAB(1);
     	prof.SelectIdeaCommentsTAB(0);
-    	//home.SelectLogout();
-    }	
+     }	
 }
