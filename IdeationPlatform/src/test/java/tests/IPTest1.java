@@ -38,22 +38,13 @@ public class IPTest1 extends BaseTest{
     		}
     	}*/
     
- /*   @Test(dataProvider="Administrator",dataProviderClass=DataproviderClass.class)
+   @Test(dataProvider="Administrator",dataProviderClass=DataproviderClass.class)
     public void CreateNewCampaign(String uname, String pass) {
     	home=SignIn(uname,pass);
-		camp=home.navigatetoCreateCampaign();
-		String cn=camps.getData(0, 1, 0);
-        String cd=camps.getData(0, 1, 1);
-        String sd=Common.GetCurrentDate();
-        String ed=camps.getData(0, 1, 2);
-        camp.FillinNewCampaign(cn, cd, sd, ed);
-        cir=camp.FindUserstoCampaigClick();
-        cir.SelectCirclesMenu();
-        cir.SelectCircletoCampaign("TestCircle");
-        cir.SaveCircletoCampaign();
-        camp.PublishCampaign();
-
-    }*/
+    	camp=home.ViewFirstCampaign();
+     	//camp.ShareCampaign();
+    	camp.DeleteCampaign();
+    }
     
     
 /*    @Test(dataProvider="Administrator",dataProviderClass=DataproviderClass.class)
@@ -88,11 +79,11 @@ public class IPTest1 extends BaseTest{
 	   ide.DeleteIdeaFromEdit();
 	   ide.FollowIdea();
 }*/
-   @Test(dataProvider="Administrator",dataProviderClass=DataproviderClass.class)
+/*   @Test(dataProvider="Administrator",dataProviderClass=DataproviderClass.class)
     public void TestIdeationCircles(String uname, String pass) {
     	home=SignIn(uname,pass);
     	camp=home.ViewFirstCampaign();
 
          
-   }
+   }*/
 }

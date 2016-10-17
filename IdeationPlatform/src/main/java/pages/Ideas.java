@@ -96,7 +96,7 @@ public class Ideas extends Base{
     	WebElement dcom = Browser.driver.findElement(By.id("MainCT_ideaCommentList_lvComments_btnDeleteComment_"+String.valueOf(i)));
     	if (dcom.isDisplayed()) {
     	dcom.click();
-        ConfirmDelete();
+    	ConfirmDelete();	
     	WaitForVisibility(By.id("MainCT_lblIdeaName"),3);
     	}
     	return this;
@@ -104,7 +104,7 @@ public class Ideas extends Base{
     
     public Ideas DeleteIdeaByMenu() {
     	DeleteIdea.click();
-    	ConfirmDelete();
+    	ConfirmDelete();	
     	return this;
     }
     
@@ -113,7 +113,7 @@ public class Ideas extends Base{
     	WaitForVisibility(By.id("MainCT_lblTitle"),2);
     	if (DeleteIdeaBtn.isDisplayed()) {
     		DeleteIdeaBtn.click();
-    		ConfirmDelete();
+    		ConfirmDelete();	
     		WaitForVisibility(By.id("MainCT_lblFilter"),2);
        	}
     	return this;

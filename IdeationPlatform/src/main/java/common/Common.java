@@ -9,7 +9,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -51,12 +50,12 @@ public class Common {
          System.out.println("Current date&time: "+date1);
 	 }*/
 	
-		public static void testTakesScreenshot() throws Exception {
+/*		public static void testTakesScreenshot() throws Exception {
 			File scrFile = ((TakesScreenshot) Browser.driver)
 			.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(scrFile, new File("D:\\00-DISK-D\\WebDriver PXC Projects\\CPDLocal\\main_page.png"));
 		}
-
+*/
 		public static String GetCurrentDate(){
 			DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy ");
 			//get current date time with Date()

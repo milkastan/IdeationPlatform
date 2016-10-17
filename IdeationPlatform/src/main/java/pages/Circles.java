@@ -141,7 +141,7 @@ public class Circles extends Base{
          System.out.println("Position of circle is:"+cnum);
          WebElement DeleteCircleBtn = Browser.driver.findElement(By.id("MainCT_ucManageCircles_lvCircles_lbtnDelete_"+cnum));
          DeleteCircleBtn.click();
-		 ConfirmDelete();
+         ConfirmDelete();
 		return this;
 	}
 }

@@ -10,10 +10,8 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 public class Campaigns extends Base{
-	/*@FindBy(how=How.ID, using="MainCT_tbCampaignTitle")
+	@FindBy(how=How.ID, using="MainCT_tbCampaignTitle")
 	WebElement CampaignTitle;
-	@FindBy(how=How.ID, using="MainCT_tbDescription")
-	WebElement CampaignDesc;*/
 	@FindBy(how=How.ID, using="MainCT_lblSubmitUsers")
 	WebElement FindUsers;
 	@FindBy(how=How.ID, using="MainCT_btnSubmit1")
@@ -47,7 +45,7 @@ public class Campaigns extends Base{
 	@FindBy(how=How.ID, using="RightCT_hlnkShareCampaign")
 	WebElement ShareCampaign;
 	//View campaign text
-	@FindBy(how=How.XPATH, using="//*[@id='MainCT_lblCampaignName']/text()")
+	@FindBy(how=How.XPATH, using="//*[@id='MainCT_lblCampaignName']")
 	WebElement CampTitle;
 	@FindBy(how=How.XPATH, using="//*[@id='lblDescription']/text()")
 	WebElement CampDesc;
@@ -83,7 +81,6 @@ public class Campaigns extends Base{
 	
 	//input[@type='text'] - TAG is nd input field
 
-	public static int CampNum;
 	
 	public Campaigns() {
 		PageFactory.initElements(Browser.driver, this);
@@ -124,32 +121,57 @@ public class Campaigns extends Base{
 	     	System.out.println("Campaign Avg Rating: "+GetCampaignAvgRating());
 	     	System.out.println("-------------------------------------");
 	    }
+	  
+	  public Campaigns DeleteCampaign(){
+		  System.out.println("Deleting campaign: "+CampTitle.getText());
+		  WaitForClickable(DeleteCampaign,5);
+		  DeleteCampaign.click();
+		  ConfirmDelete();	  
+		  WaitForVisibility(By.id("MainCT_lblFilter"),5);  
+		  System.out.println("Campaign has deleted");
+		  System.out.println("-------------------------------------");
+		  return this;
+	  }
+	  
+	  public Campaigns ShareCampaign() {
+		  System.out.println("Sharing campaign: "+CampTitle.getText());
+		  ShareCampaign.click();
+		  WaitForVisibility(By.xpath("//*[@class='modal fade in']"),3);
+		  ConfirmCopyURL();
+		  WaitForVisibility(By.id("MainCT_lblCampaignName"),5);  
+		  System.out.println("Campaing URL has copied to clipboard");
+		  return this;
+	  }
 	
 	public Campaigns FillinNewCampaign(String campn, String campdes, String sdate, String edate) {
-		List<WebElement> txt = Browser.driver.findElements(By.xpath("//td[@class='k-editable-area']/iframe"));
-		List<WebElement> bbtns = Browser.driver.findElements(By.xpath("//*[@class='k-tool-icon k-bold']"));
-		List<WebElement> ibtns = Browser.driver.findElements(By.xpath("//*[@class='k-tool-icon k-italic']"));
-		txt.get(0).click();
-		txt.get(0).sendKeys(campn);
-		bbtns.get(1).click();   // bold button
-		txt.get(1).click();
-		txt.get(1).sendKeys("Description of campaign "+campn);
-		txt.get(1).sendKeys(Keys.RETURN);
+		WebElement txt = Browser.driver.findElement(By.xpath("//td[@class='k-editable-area']/iframe"));
+		WebElement bbtn = Browser.driver.findElement(By.xpath("//*[@class='k-tool-icon k-bold']"));
+		WebElement ibtn = Browser.driver.findElement(By.xpath("//*[@class='k-tool-icon k-italic']"));
+		CampaignTitle.sendKeys(campn);
+		bbtn.click();   // bold button
+		txt.click();
+		txt.sendKeys("Description of campaign "+campn);
+		txt.sendKeys(Keys.RETURN);
 		DescBulletsBtn.click();
-		ibtns.get(1).click();
-		txt.get(1).sendKeys("Description of campaign");
-		txt.get(1).sendKeys(Keys.RETURN);
-		txt.get(1).sendKeys("Description of campaign");
-		txt.get(1).sendKeys(Keys.RETURN);
+		ibtn.click();
+		txt.sendKeys("Description of campaign");
+		txt.sendKeys(Keys.RETURN);
+		txt.sendKeys("Description of campaign");
+		txt.sendKeys(Keys.RETURN);
 		StartDateField.sendKeys(sdate);
 		EndDateField.sendKeys(edate);
-		
+		System.out.println("Campaign Name:"+campn);
+		System.out.println("Campaign Start Date:"+sdate);
+		System.out.println("Campaign End Date:"+edate);
+		System.out.println("-------------------------------------");
 		return this;
 	}
 	
 	//am = admin emails
     public Campaigns AddCampaignAdministgrator(String am) {
     	CampAdminField.sendKeys(am);
+    	System.out.println("Campaign Administrator email: "+am);
+    	System.out.println("-------------------------------------");
     	return this;
     }
 
@@ -175,42 +197,30 @@ public class Campaigns extends Base{
 		if (SubmitCampaign.isDisplayed()){
 		    SubmitCampaign.click();
 		}
-		WaitForVisibility(By.id("MainCT_lblCampaignName"),3);		
+		WaitForVisibility(By.id("MainCT_lblCampaignName"),3);	
+		System.out.println("New campaign has published!");
+		System.out.println("-------------------------------------");
 		return this;
 	}
 	
-	public Campaigns CheckForFirstCampaign(String cname) {
-		WebElement firstcamp = Browser.driver.findElement(By.id("MainCT_lvCampaigns_ctrl0_lblCampTitle_0"));
-		if (firstcamp.getText().equalsIgnoreCase(cname)) {
-		    System.out.println("Campaign with title: "+cname+" is on the rist position!");
-		}else {
-			System.out.println("Campaign with title: "+cname+" is not at the first position");
-		}
-		return this;
-	}
-	
-	public void FindCampNumber(String cname) {
-		int i;
-		System.out.println("Total number of cappaigns on Home page : "+HomeCampNum.getText());
-		if (HomeCampNum.getText() != "0"){
-			int maxcamp = Integer.parseInt(HomeCampNum.getText());
-			for ( i=0; i>maxcamp; i++) {
-				WebElement cam = Browser.driver.findElement(By.id("MainCT_lvCampaigns_ctrl0_lblCampTitle_"+String.valueOf(i)+"_lblCampaignTitle_"+String.valueOf(i)));
-				if (cam.getText().equalsIgnoreCase(cname)){
-					CampNum=i;
-					break;
-				}
-			}
-		}
-	}
 
    public Campaigns EditCampaign(){
+	   System.out.println("Editing current campaign");
+	    String camptitle = CampTitle.getText();
 		EditCampaign.click();
-		List<WebElement> txt = Browser.driver.findElements(By.xpath("//td[@class='k-editable-area']/iframe"));
-		txt.get(0).click();
-		txt.get(0).sendKeys(" Changed");
-		txt.get(1).click();
-		txt.get(1).sendKeys(" Description Changed");
+		WebElement txt = Browser.driver.findElement(By.xpath("//td[@class='k-editable-area']/iframe"));
+		CampaignTitle.click();
+		CampaignTitle.sendKeys(" Changed");
+		txt.click();
+		txt.sendKeys(" Description Changed");
+		if (SubmitCampaign.isDisplayed()){
+		    SubmitCampaign.click();
+		}
+		WaitForVisibility(By.id("MainCT_lblCampaignName"),3);	
+		if (CampTitle.getText().equalsIgnoreCase(camptitle+" Changed")){
+			System.out.println("Campaign is edited successfully");
+			System.out.println("----------------------------------");
+		}
 		return this;
 	}
 	
@@ -218,6 +228,7 @@ public class Campaigns extends Base{
     	WebElement ide = Browser.driver.findElement(By.id("MainCT_IdeaList_lvIdeas_ctrl"+String.valueOf(i)+"_lblCampaignTitle_"+String.valueOf(i)));
     	ide.click();
     	WaitForVisibility(By.id("MainCT_lblIdeaName"),30);
+    	System.out.println("-------------------------------------------");
        	return new Ideas();
     }
     
@@ -319,9 +330,9 @@ public class Campaigns extends Base{
 						e.printStackTrace();
 					}
     			}
-    	System.out.println("Campaign has to appear first in the list");
+    	System.out.println("Pin Campaign has executed");
     	}else {
-    		System.out.println("Campaign is already first in the list");
+    		System.out.println("Campaign is not pinned in the list");
     	}  
     	return this;
     }
@@ -345,4 +356,7 @@ public class Campaigns extends Base{
     	}  
     	return this;
     }
+    
+
+  
 }

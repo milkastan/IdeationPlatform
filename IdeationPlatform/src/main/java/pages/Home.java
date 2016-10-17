@@ -36,12 +36,57 @@ public class Home extends Base{
 	@FindBy(how=How.XPATH, using="//*[@class='navbar-toggle']")
 	WebElement MenuBtn;
 	//total campaigns shown on home page
-	@FindBy(how=How.XPATH, using="//*[@id='MainCT_tabCampaigns']/div/div/div/div")
-	WebElement HomeCampNum;
-
+	//@FindBy(how=How.XPATH, using="//*[@id='MainCT_tabCampaigns']/div/div/div/div")
+	WebElement AllHomeCamp;
+	@FindBy(how=How.ID, using="MainCT_lvCampaigns_ctrl0_PinIcon_0")
+	WebElement PinIcon;
 	
 	public Home() {
 		PageFactory.initElements(Browser.driver, this);
+	}
+	
+	//Check by name if campaign is on the first position
+	public Home CheckFirstCampaignByName(String cname) {
+		WebElement ct = Browser.driver.findElement(By.id("MainCT_lvCampaigns_ctrl0_lblCampTitle_0"));
+		if (ct.getText().equalsIgnoreCase(cname)) {
+			System.out.println("Campaign with title: "+cname+" is pinned at the first position");
+		} else {
+			System.out.println("Campaign with title: "+cname+" is not at the first position");
+		}
+			System.out.println("---------------------------------");
+		return this;
+	}
+	
+
+	//Check if on the first campaign appear Pin icon
+	public Home CheckFirstCampaignPinned(){
+		if (PinIcon.isDisplayed()) {
+			System.out.println("First campaing is marked with pin icon");
+		
+		}else {
+			System.out.println("First campaing is NOT marked with pin icon");
+		}
+		System.out.println("---------------------------------");
+	return this;
+	}
+	
+	//Search between all campaigns by name and return campaign number in the list
+	public int FindCampNumber(String cname) {
+		int i=-1;
+    	List<WebElement> cmp = Browser.driver.findElements(By.xpath("//*[@id='MainCT_tabCampaigns']/div/div/div/div"));
+    	System.out.println("*****Number if campaigns is: "+cmp.size());
+    	int maxcamp =cmp.size();
+		if (maxcamp > 0){
+	  		for ( i=0; i<maxcamp; i++) {
+	  			WebElement ct = Browser.driver.findElement(By.id("MainCT_lvCampaigns_ctrl"+String.valueOf(i)+"_lblCampTitle_"+String.valueOf(i)));
+				if (ct.getText().equalsIgnoreCase(cname)){
+					break;
+				}
+			}
+		}
+		System.out.println("Campaign "+cname+" has number "+i);
+		System.out.println("----------------------------------");
+		return i;
 	}
 	
 	public UserProfile SelectUserProfile() {
@@ -122,6 +167,8 @@ public class Home extends Base{
     	System.out.println("Selected menu Create Campaign");
     	SelectMainMenu(2);
     	WaitForVisibility(By.id("MainCT_btnSubmit1"),5);
+    	System.out.println("Creating new campaign");
+    	System.out.println("-------------------------------------");
      	return new Campaigns();
     }
     
@@ -246,14 +293,16 @@ public class Home extends Base{
     }
     
     public Campaigns ViewCampaign(int i){
+    	System.out.println("View campaign with number "+i);
     	WebElement cm = Browser.driver.findElement(By.id("MainCT_lvCampaigns_ctrl"+String.valueOf(i)+"_lblCampTitle_"+String.valueOf(i)));
     	cm.click();
     	WaitForVisibility(By.id("MainCT_lblCampaignName"),30);
+    	System.out.println("-------------------------------------------");
        	return new Campaigns();
     }
     
     public Campaigns ViewFirstCampaign(){
-    	System.out.println("View first campaign and show campaign details");
+    	System.out.println("View first campaign");
     	WebElement cm = Browser.driver.findElement(By.id("MainCT_lvCampaigns_ctrl0_lblCampTitle_0"));                                       
     	cm.click();
     	WaitForVisibility(By.id("MainCT_lblCampaignName"),30);
@@ -281,6 +330,7 @@ public class Home extends Base{
     	return this;
     }
     
+    //Check if campaigns in the list is equal to number from Home dashboard
     public void CheckCampainsNumber(){
     	List<WebElement> cmp = Browser.driver.findElements(By.xpath("//*[@id='MainCT_tabCampaigns']/div/div/div/div"));
     	System.out.println("Number if campaigns is: "+cmp.size());
@@ -288,6 +338,10 @@ public class Home extends Base{
     	    System.out.println("Number of campaigns in the list is equal to dashboard number (Campaigns I am invited to)");
     	} else
     		System.out.println("Number of shown campaigns is NOT equal to dashboard number");
+    }
+    
+    public void CheckifCampaignDeleted(String No) {
+    	
     }
     
 }

@@ -6,8 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,6 +15,7 @@ public class Base {
 	
 	Actions actions = new Actions(Browser.driver); 
 	WebDriverWait wait = new WebDriverWait(Browser.driver, 30);
+	
 		
 	 public void visit (String url){Browser.driver.get(url); 	}
 	 
@@ -113,9 +112,16 @@ public class Base {
 		}
 		
 	    public void ConfirmDelete(){
-		    WaitForVisibility(By.xpath("//*div/button[@class='modal-header']"),3);
-			WebElement DeleteOKBtn =Browser.driver.findElement(By.xpath("//*[@class='modal fade in']//button[@class='btn btn-primary']"));
-		    DeleteOKBtn.click();
-	    }
+		    WaitForVisibility(By.xpath("//*[@class='modal fade in']"),3);
+		    WebElement DeleteOKBtn = Browser.driver.findElement(By.xpath("//*[@class='btn btn-primary'][@data-dismiss='ok']"));
+		    DeleteOKBtn.click();  	
+		  }
+	    
+	    public void ConfirmCopyURL(){
+		    WaitForVisibility(By.xpath("//*[@class='modal fade in']"),3);
+		    WebElement CopyURLBtn = Browser.driver.findElement(By.id("btnCopyToClipboard"));
+		    CopyURLBtn.click();  	
+		  }
+	    
 	    
 }
