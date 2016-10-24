@@ -57,7 +57,7 @@ public class Common {
 		}
 */
 		public static String GetCurrentDate(){
-			DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy ");
+			DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy ");
 			//get current date time with Date()
 			 Date date = new Date();
 			 // Now format the date

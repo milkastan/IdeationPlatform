@@ -50,6 +50,6 @@ public class OpenPagesUser extends BaseTest{
     	prof=home.SelectUserProfile();
     	prof.PrintUserDashboardInfo();
     	prof.SelectIdeaCommentsTAB(1);
-    	prof.SelectIdeaCommentsTAB(0);
+    	//prof.SelectIdeaCommentsTAB(0);
      }	
 }

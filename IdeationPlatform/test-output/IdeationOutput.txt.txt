@@ -1,15 +1,19 @@
 [TestNG] Running:
-  C:\Users\milka.stankova\AppData\Local\Temp\testng-eclipse--1832835070\testng-customsuite.xml
+  C:\Users\milka.stankova\AppData\Local\Temp\testng-eclipse--916194107\testng-customsuite.xml
 
-Current date&time: 13/10/2016 11:02:06
+Current date&time: 24/10/2016 13:33:01
 Ideation Platform - Open all pages as User!
 --------------------------------------------
-Starting ChromeDriver 2.23.409699 (49b0fa931cda1caad0ae15b7d1b68004acd05129) on port 47639
+Starting ChromeDriver 2.23.409699 (49b0fa931cda1caad0ae15b7d1b68004acd05129) on port 17003
 Only local connections are allowed.
+Oct 24, 2016 1:33:01 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Attempting bi-dialect session, assuming Postel's Law holds true on the remote end
+Oct 24, 2016 1:33:03 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
 user:icb2user1, password:123456 logged in Ideation Platform
 --------------------------------------------
 Ideation Platform Home page is opened
-**** Login time: 1597
+**** Login time: 1589
 Visible menus for user
 -------------------------
 Home
@@ -20,24 +24,24 @@ Social Networks
 
 Selected filter for campaigns :Active
 -------------------------------------
-Number if campaigns is: 14
+Number if campaigns is: 13
 Number of campaigns in the list is equal to dashboard number (Campaigns I am invited to)
 Ideation Home Campaigns Dashboard Info
 -------------------------------------
-My Campaigns:14
-My Ideas:5
-My Comments:6
-My Average rating:3.5
+My Campaigns:13
+My Ideas:7
+My Comments:2
+My Average rating:3.3
 -------------------------------------
 Selected filter for campaigns :All
 -------------------------------------
-Number if campaigns is: 41
+Number if campaigns is: 40
 Number of campaigns in the list is equal to dashboard number (Campaigns I am invited to)
 Ideation Home Campaigns Dashboard Info
 -------------------------------------
-My Campaigns:41
-My Ideas:36
-My Comments:36
+My Campaigns:40
+My Ideas:38
+My Comments:32
 My Average rating:3.3
 -------------------------------------
 Selected filter for campaigns :Inactive
@@ -71,25 +75,25 @@ Selected menu Dashboard
 Selected filter :Entire organization
 -------------------------------------
 Ideation Dashboard Campaigns Info
-My Campaigns:47
-My Ideas:7406
-My Comments:10807
+My Campaigns:46
+My Ideas:6914
+My Comments:10222
 My Average rating:520
 -------------------------------------
 Selected filter :My campaigns
 -------------------------------------
 Ideation Dashboard Campaigns Info
 My Campaigns:2
-My Ideas:6
-My Comments:5
-My Average rating:5
+My Ideas:7
+My Comments:7
+My Average rating:6
 -------------------------------------
 Selected filter :Campaings I am invited to
 -------------------------------------
 Ideation Dashboard Campaigns Info
-My Campaigns:41
-My Ideas:7133
-My Comments:10553
+My Campaigns:40
+My Ideas:6639
+My Comments:9967
 My Average rating:519
 -------------------------------------
 Selected filter :Followed campaigns
@@ -101,6 +105,32 @@ My Comments:253
 My Average rating:297
 -------------------------------------
 Selected filter :Active Campaigns
+-------------------------------------
+Selected filter :Entire organization
+-------------------------------------
+Ideation Dashboard Campaigns Info
+My Campaigns:19
+My Ideas:1994
+My Comments:2037
+My Average rating:518
+-------------------------------------
+Selected filter :My campaigns
+-------------------------------------
+Ideation Dashboard Campaigns Info
+My Campaigns:2
+My Ideas:7
+My Comments:7
+My Average rating:6
+-------------------------------------
+Selected filter :Campaings I am invited to
+-------------------------------------
+Ideation Dashboard Campaigns Info
+My Campaigns:13
+My Ideas:1719
+My Comments:1782
+My Average rating:510
+-------------------------------------
+Selected filter :Followed campaigns
 -------------------------------------
 Ideation Dashboard Campaigns Info
 My Campaigns:0
@@ -114,14 +144,17 @@ Selected menu My Profile
 -------------------------------------
 User Dashboard Info
 -------------------------------------
-User last login: 13/10/2016
+User last login: 24/10/2016
 Started campaigns: 0
-Ideas submitted: 37
-Comments submitted: 36
-Ratings made: 4
+Ideas submitted: 39
+Comments submitted: 32
+Ratings made: 5
+Ratings made: Rating 3.5 (6 votes)
 -------------------------------------
+Selected menu Comments on My Profile
+----------------------
 Finished Ideation Platform test!
-Current date&time: 13/10/2016 11:02:47
+Current date&time: 24/10/2016 13:33:54
 --------------------------------
 PASSED: CreateNewCampaign("icb2user1", "123456")
 
@@ -136,9 +169,9 @@ Default suite
 Total tests run: 1, Failures: 0, Skips: 0
 ===============================================
 
+[TestNG] Time taken by org.testng.reporters.SuiteHTMLReporter@60f82f98: 30 ms
+[TestNG] Time taken by org.testng.reporters.EmailableReporter2@7a5d012c: 4 ms
+[TestNG] Time taken by org.testng.reporters.jq.Main@edf4efb: 29 ms
+[TestNG] Time taken by org.testng.reporters.XMLReporter@3d8c7aca: 4 ms
 [TestNG] Time taken by [FailedReporter passed=0 failed=0 skipped=0]: 6 ms
-[TestNG] Time taken by org.testng.reporters.EmailableReporter2@13fee20c: 5 ms
-[TestNG] Time taken by org.testng.reporters.SuiteHTMLReporter@1a407d53: 27 ms
-[TestNG] Time taken by org.testng.reporters.JUnitReportReporter@17550481: 4 ms
-[TestNG] Time taken by org.testng.reporters.jq.Main@21bcffb5: 31 ms
-[TestNG] Time taken by org.testng.reporters.XMLReporter@dfd3711: 5 ms
+[TestNG] Time taken by org.testng.reporters.JUnitReportReporter@6b2fad11: 4 ms

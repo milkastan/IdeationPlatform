@@ -11,17 +11,17 @@ import org.testng.Assert;
 import org.testng.Assert;
 
 public class UserProfile extends Base{
-	@FindBy(how=How.ID, using="RightCT_ucUserCounts_repStats_lblStatValue_0")
+	@FindBy(how=How.ID, using="MainCT_ucUserCounts_repStats_lblStatValue_0")
 	WebElement ULastLogin;
-	@FindBy(how=How.ID, using="RightCT_ucUserCounts_repStats_lblStatValue_1")
+	@FindBy(how=How.ID, using="MainCT_ucUserCounts_repStats_lblStatValue_1")
 	WebElement UStartedCamp;
-	@FindBy(how=How.ID, using="RightCT_ucUserCounts_repStats_lblStatValue_2")
+	@FindBy(how=How.ID, using="MainCT_ucUserCounts_repStats_lblStatValue_2")
 	WebElement UIdeasSubmitted;
-	@FindBy(how=How.ID, using="RightCT_ucUserCounts_repStats_lblStatValue_3")
+	@FindBy(how=How.ID, using="MainCT_ucUserCounts_repStats_lblStatValue_3")
 	WebElement UCommentsMade;
-	@FindBy(how=How.ID, using="RightCT_ucUserCounts_repStats_lblStatValue_4")
+	@FindBy(how=How.ID, using="MainCT_ucUserCounts_repStats_lblStatValue_4")
 	WebElement URatingsMade;
-	@FindBy(how=How.ID, using="RightCT_ucUserRating_lblRatingValue")
+	@FindBy(how=How.ID, using="MainCT_ucUserRating_lblRatingValue")
 	WebElement URatingValue;
 	
 	

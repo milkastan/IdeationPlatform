@@ -20,7 +20,7 @@ public class ManageCampaign extends BaseTest{
 	
     @AfterTest
     public void ShutDown() {
-    	System.out.println("Finished Ideation Platform test!");
+    	System.out.println("Finished Manage Campaigns test!");
     	PrintCurrentDateTime();
     	System.out.println("--------------------------------");
     }
@@ -28,10 +28,9 @@ public class ManageCampaign extends BaseTest{
     @Test(dataProvider="Administrator",dataProviderClass=DataproviderClass.class)
     public void TestManageCampaigns(String uname, String pass) {
     	home=SignIn(uname,pass);
-    	//View first campaign and Delete campaign
-    	//camp=home.ViewFirstCampaign();
-    	//camp.DeleteCampaign();
-    	
+    	//delete campaign
+    	camp=home.ViewFirstCampaign();
+    	camp.DeleteCampaign();
     	//Create new campaign
 		camp=home.navigatetoCreateCampaign();
 		//read campaign data from excel
@@ -39,6 +38,7 @@ public class ManageCampaign extends BaseTest{
         String cd=camps.getData(0, 1, 1);
         String sd = Common.GetCurrentDate();
         String ed=camps.getData(0, 1, 2);
+        System.out.println("End Date:"+ed);
         camp.FillinNewCampaign(cn, cd, sd, ed);
         camp.AddCampaignAdministgrator("icb2cc@icb2.bg");
         //cir=camp.FindUserstoCampaigClick();
@@ -79,8 +79,9 @@ public class ManageCampaign extends BaseTest{
         camp.UnpinCampaign();
         home.navigatetoHome();
         home.CheckFirstCampaignByName(cname);
-        //share campaingn
+        //share campaign
        	camp=home.ViewFirstCampaign();
     	camp.ShareCampaign();
+
     }
 }

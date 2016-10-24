@@ -30,20 +30,28 @@ public class Campaigns extends Base{
 	WebElement AddTagBtn;
 	
 	//Campaign Actions
-	@FindBy(how=How.ID, using="RightCT_hlnkEditCampaign")
+	@FindBy(how=How.ID, using="MainCT_hlnkEditCampaign")
 	WebElement EditCampaign;
-	@FindBy(how=How.ID, using="RightCT_lnkDelete")
+	@FindBy(how=How.ID, using="MainCT_lnkDelete")
 	WebElement DeleteCampaign;
-	@FindBy(how=How.ID, using="RightCT_lnkFollowCampaign")
+	@FindBy(how=How.ID, using="MainCT_lnkFollowCampaign")
 	WebElement FollowCampaign;
-	@FindBy(how=How.ID, using="RightCT_hlnkSubmitIdea")
+	@FindBy(how=How.ID, using="MainCT_hlnkSubmitIdea")
 	WebElement SubmitIdea;
-	@FindBy(how=How.ID, using="RightCT_lnkPinCampaign")
+	@FindBy(how=How.ID, using="MainCT_lnkPinCampaign")
 	WebElement PinCampaign;
-	@FindBy(how=How.ID, using="RightCT_hlnkExportCampaign")
-	WebElement ExportCampaign;
-	@FindBy(how=How.ID, using="RightCT_hlnkShareCampaign")
+	@FindBy(how=How.ID, using="MainCT_hlnkShareCampaign")
 	WebElement ShareCampaign;
+	//Export campaign
+	@FindBy(how=How.ID, using="MainCT_hlnkExportCampaign")
+	WebElement ExportCampaign;
+	@FindBy(how=How.XPATH, using="//*div/a[@id='MainCT_hlPdfExport']/img[@class='pull-right']")
+	WebElement ExportCampaignPDF;
+	@FindBy(how=How.XPATH, using="//*div/a[@id='MainCT_hlExcelExport']/img[@class='pull-right']")
+	WebElement ExportCampaignExcel;
+	@FindBy(how=How.XPATH, using="//div[@id='MainCT_divMoveIdea']/following-sibling::div[@class='custom_cell']")
+	WebElement GoToCampaign;
+
 	//View campaign text
 	@FindBy(how=How.XPATH, using="//*[@id='MainCT_lblCampaignName']")
 	WebElement CampTitle;
@@ -67,15 +75,15 @@ public class Campaigns extends Base{
 	WebElement HomeCampNum;
 	
 	//Campaign dashboard statistics
-	@FindBy(how=How.ID, using="RightCT_ucCampaignCounts_repStats_lblStatValue_0")
+	@FindBy(how=How.ID, using="MainCT_ucCampaignCounts_repStats_lblStatValue_0")
 	WebElement CampViews;
-	@FindBy(how=How.ID, using="RightCT_ucCampaignCounts_repStats_lblStatValue_1")
+	@FindBy(how=How.ID, using="MainCT_ucCampaignCounts_repStats_lblStatValue_1")
 	WebElement CampFollowers;
-	@FindBy(how=How.ID, using="RightCT_ucCampaignCounts_repStats_lblStatValue_2")
+	@FindBy(how=How.ID, using="MainCT_ucCampaignCounts_repStats_lblStatValue_2")
 	WebElement CampIdeas;
-	@FindBy(how=How.ID, using="RightCT_ucCampaignCounts_repStats_lblStatValue_3")
+	@FindBy(how=How.ID, using="MainCT_ucCampaignCounts_repStats_lblStatValue_3")
 	WebElement CampComments;
-	@FindBy(how=How.ID, using="RightCT_ucCampaignCounts_repStats_lblStatValue_4")
+	@FindBy(how=How.ID, using="MainCT_ucCampaignCounts_repStats_lblStatValue_4")
 	WebElement CampAvgRating;
 	
 	
@@ -84,6 +92,24 @@ public class Campaigns extends Base{
 	
 	public Campaigns() {
 		PageFactory.initElements(Browser.driver, this);
+	}
+	
+	public Campaigns ExportCampaign() {
+		System.out.println("Export Campaign");
+		WaitForClickable(ExportCampaign,5);
+		ExportCampaign.click();
+		WaitForVisibility(By.id("exportPopup"),3);
+		ExportCampaignPDF.click();
+		ExportCampaignExcel.click();
+		System.out.println("Generated Executive summary and Campaign overview reports");
+		System.out.println("Check in Download folder");
+		System.out.println("----------------------------------");
+		actions
+		   .sendKeys(Keys.ESCAPE)
+		   .build()
+   	       .perform();
+		
+		return this;
 	}
 	
 	public String GetCampaignViews() {
@@ -124,7 +150,7 @@ public class Campaigns extends Base{
 	  
 	  public Campaigns DeleteCampaign(){
 		  System.out.println("Deleting campaign: "+CampTitle.getText());
-		  WaitForClickable(DeleteCampaign,5);
+		  WaitForWebElementVisibility(DeleteCampaign,5);
 		  DeleteCampaign.click();
 		  ConfirmDelete();	  
 		  WaitForVisibility(By.id("MainCT_lblFilter"),5);  
@@ -136,10 +162,10 @@ public class Campaigns extends Base{
 	  public Campaigns ShareCampaign() {
 		  System.out.println("Sharing campaign: "+CampTitle.getText());
 		  ShareCampaign.click();
-		  WaitForVisibility(By.xpath("//*[@class='modal fade in']"),3);
 		  ConfirmCopyURL();
 		  WaitForVisibility(By.id("MainCT_lblCampaignName"),5);  
 		  System.out.println("Campaing URL has copied to clipboard");
+		  System.out.println("-------------------------------------");
 		  return this;
 	  }
 	
@@ -147,6 +173,7 @@ public class Campaigns extends Base{
 		WebElement txt = Browser.driver.findElement(By.xpath("//td[@class='k-editable-area']/iframe"));
 		WebElement bbtn = Browser.driver.findElement(By.xpath("//*[@class='k-tool-icon k-bold']"));
 		WebElement ibtn = Browser.driver.findElement(By.xpath("//*[@class='k-tool-icon k-italic']"));
+		CampaignTitle.click();
 		CampaignTitle.sendKeys(campn);
 		bbtn.click();   // bold button
 		txt.click();
@@ -156,7 +183,7 @@ public class Campaigns extends Base{
 		ibtn.click();
 		txt.sendKeys("Description of campaign");
 		txt.sendKeys(Keys.RETURN);
-		txt.sendKeys("Description of campaign");
+		txt.sendKeys(campdes);
 		txt.sendKeys(Keys.RETURN);
 		StartDateField.sendKeys(sdate);
 		EndDateField.sendKeys(edate);
@@ -212,6 +239,8 @@ public class Campaigns extends Base{
 		CampaignTitle.click();
 		CampaignTitle.sendKeys(" Changed");
 		txt.click();
+		String keyPressed = Keys.chord(Keys.CONTROL,Keys.END);
+		txt.sendKeys(keyPressed);
 		txt.sendKeys(" Description Changed");
 		if (SubmitCampaign.isDisplayed()){
 		    SubmitCampaign.click();

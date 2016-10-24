@@ -25,13 +25,13 @@ public class Home extends Base{
 	WebElement MenuLogout;
 	@FindBy(how=How.ID, using="MainCT_lvCampaigns_ctrl0_lblCampTitle_0")
 	WebElement ViewCampaign1;
-	@FindBy(how=How.ID, using="RightCT_ucGeneralStatistics_repStats_lblStatValue_0")
+	@FindBy(how=How.ID, using="MainCT_ucGeneralStatistics_repStats_lblStatValue_0")
 	WebElement MyCampaigns;
-	@FindBy(how=How.ID, using="RightCT_ucGeneralStatistics_repStats_lblStatValue_1")
+	@FindBy(how=How.ID, using="MainCT_ucGeneralStatistics_repStats_lblStatValue_1")
 	WebElement MyIdeas;
-	@FindBy(how=How.ID, using="RightCT_ucGeneralStatistics_repStats_lblStatValue_2")
+	@FindBy(how=How.ID, using="MainCT_ucGeneralStatistics_repStats_lblStatValue_2")
 	WebElement MyComments;
-	@FindBy(how=How.ID, using="RightCT_ucGeneralStatistics_repStats_lblStatValue_3")
+	@FindBy(how=How.ID, using="MainCT_ucGeneralStatistics_repStats_lblStatValue_3")
 	WebElement MyAvgRating;
 	@FindBy(how=How.XPATH, using="//*[@class='navbar-toggle']")
 	WebElement MenuBtn;
@@ -95,7 +95,7 @@ public class Home extends Base{
 			WaitForVisibility(By.id("ucMenu_topnav"),5);  
 			List<WebElement> mnu = Browser.driver.findElements(By.xpath("//*[@id='ucMenu_topnav']/li/a"));
 		  System.out.println("Number of menu items: "+mnu.size());
-			mnu.get(5).click();
+			mnu.get(6).click();
 			
 		} else {
 		UserDD.click();
@@ -166,7 +166,7 @@ public class Home extends Base{
     public Campaigns navigatetoCreateCampaign() {
     	System.out.println("Selected menu Create Campaign");
     	SelectMainMenu(2);
-    	WaitForVisibility(By.id("MainCT_btnSubmit1"),5);
+    	WaitForVisibility(By.id("MainCT_lblCampaignTitle"),3);
     	System.out.println("Creating new campaign");
     	System.out.println("-------------------------------------");
      	return new Campaigns();
@@ -213,7 +213,7 @@ public class Home extends Base{
 	//accessible by role administrator
     public Administration navigatetoAdministration() {
     	System.out.println("Selected menu Administration");
-    	SelectMainMenu(6);
+    	SelectMainMenu(5);
     	WaitForVisibility(By.id("MainCT_lblUserAdministration"),3);
     	System.out.println("-------------------------------------");
     	try {

@@ -41,11 +41,24 @@ public class IPTest1 extends BaseTest{
    @Test(dataProvider="Administrator",dataProviderClass=DataproviderClass.class)
     public void CreateNewCampaign(String uname, String pass) {
     	home=SignIn(uname,pass);
+       //camp=home.ViewFirstCampaign();
+    //	camp.ExportCampaign();
+    	//delete campaign
+    	//home.navigatetoHome();
     	camp=home.ViewFirstCampaign();
-     	//camp.ShareCampaign();
+    	//camp.DeleteCampaign();
+    	//Select Administration
+    	//adm=home.navigatetoAdministration();
+    //	adm.SelectManageCircles();
+    //	adm=home.navigatetoAdministration();
+    //	adm.SelectUsersAdministration();
+    	//Select user profile
+    	//prof=home.SelectUserProfile();
+    	//prof.PrintUserDashboardInfo();
+    	//prof.SelectIdeaCommentsTAB(1);
+    	//prof.SelectIdeaCommentsTAB(0);
     	camp.DeleteCampaign();
-    }
-    
+   }
     
 /*    @Test(dataProvider="Administrator",dataProviderClass=DataproviderClass.class)
     public void RunIPTests2(String uname, String pass) {

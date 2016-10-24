@@ -3,11 +3,11 @@
 <suite name="Suite">
   <test name="Test">
     <classes>
-      <class name="tests.OpenPagesCC"/>
-      <class name="tests.IPTest1"/>
       <class name="tests.OpenPagesSysAdmin"/>
+      <class name="tests.OpenPagesCC"/>
       <class name="tests.OpenPagesUser"/>
-      <class name="common.Common"/>
+      <class name="tests.OpenPagesExternalUser"/>
+      <class name="tests.ManageCampaign"/>      
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

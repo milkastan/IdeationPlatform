@@ -14,16 +14,16 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Ideas extends Base{
 	//Idea Actions
-	@FindBy(how=How.ID, using="RightCT_hlnkEditIdea")
+	@FindBy(how=How.ID, using="MainCT_hlnkEditIdea")
 	WebElement EditIdea;
-	@FindBy(how=How.ID, using="RightCT_lnkDeleteIdea")
+	@FindBy(how=How.ID, using="MainCT_lnkDeleteIdea")
 	WebElement DeleteIdea;
 
-	@FindBy(how=How.ID, using="RightCT_lnkFollowIdea")
+	@FindBy(how=How.ID, using="MainCT_lnkFollowIdea")
 	WebElement FollowIdea;
-	@FindBy(how=How.ID, using="RightCT_hlnkSubmitComment")
+	@FindBy(how=How.ID, using="MainCT_hlnkSubmitComment")
 	WebElement SubmitComment;
-	@FindBy(how=How.ID, using="RightCT_divMoveIdea")
+	@FindBy(how=How.ID, using="MainCT_divMoveIdea")
 	WebElement MoveIdea;
 	//Idea details
 	@FindBy(how=How.ID, using="MainCT_lblIdeaName")
