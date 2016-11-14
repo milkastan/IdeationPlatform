@@ -6,16 +6,15 @@ import org.testng.annotations.Test;
 
 import common.DataproviderClass;
 
-public class OpenPagesCC extends BaseTest{
+public class AZOpenPagesSysAdmin extends BaseTest{
 	@BeforeTest
 	public void setUp() {
 		PrintCurrentDateTime();
-    	System.out.println("Ideation Platform - Open all pages as Company Creator!");
+    	System.out.println("Ideation Platform Azure - Open all pages as system administrator!");
     	System.out.println("--------------------------------------------");
-    	navigatetoIdeation ();
+    	navigatetoIdeationAZTest1 ();
     	//ResizeBrowserWindow(760, 1280);
-    	
-    }
+     }
 	
     @AfterTest
     public void ShutDown() {
@@ -24,8 +23,8 @@ public class OpenPagesCC extends BaseTest{
     	System.out.println("--------------------------------");
     }
     
-    @Test(dataProvider="AZCC1",dataProviderClass=DataproviderClass.class)
-    public void OpenIDEPagesCC(String uname, String pass) {
+    @Test(dataProvider="AZSA1",dataProviderClass=DataproviderClass.class)
+    public void OpenIDEPagesSA(String uname, String pass) {
     	home=SignIn(uname,pass);
     	//print all visible menus for user
     	home.PrintAllMenuItems();
@@ -44,15 +43,21 @@ public class OpenPagesCC extends BaseTest{
     	for (int i=0; i<4; i++) {
       		 dashb.FilterOrgCampaigns(i);
       		 dashb.PrintDashboardCampaignsInfo();
-      	}  
+      	} 
     	//Select menu Private Circles    
     	home.navigatetoPrivateCircles();
     	//Select menu Social Networks
     	home.navigatetoSocialNetworks(4);
+    	//Select Administration
+    	adm=home.navigatetoAdministration();
+    	adm.SelectManageCircles();
+    	adm=home.navigatetoAdministration();
+    	adm.SelectUsersAdministration();
     	//Select user profile
     	prof=home.SelectUserProfile();
     	prof.PrintUserDashboardInfo();
     	prof.SelectIdeaCommentsTAB(1);
     	//prof.SelectIdeaCommentsTAB(0);
-     }	
+    	//home.SelectLogout();
+    }	
 }

@@ -66,6 +66,15 @@ public class Common {
 			return date1;
 		}
 		
-
+		public static String GetCurrentDateAZ(){
+			DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy ");
+			//get current date time with Date()
+			 Date date = new Date();
+			 // Now format the date
+			 String date1= dateFormat.format(date);
+			 System.out.println("Current date:"+date1);
+			return date1;
+		}
+		
 		
 }

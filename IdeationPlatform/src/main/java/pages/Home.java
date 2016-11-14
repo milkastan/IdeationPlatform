@@ -1,5 +1,6 @@
 package pages;
 
+
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import static org.testng.AssertJUnit.assertTrue;
 
 public class Home extends Base{
 
@@ -57,6 +59,12 @@ public class Home extends Base{
 		return this;
 	}
 	
+	 public void VerifyFirstCampaignByName(String cname) {
+		WebElement ct = Browser.driver.findElement(By.id("MainCT_lvCampaigns_ctrl0_lblCampTitle_0"));
+		assertTrue("Company is not at the first possition",(ct.getText().equalsIgnoreCase(cname)));
+		System.out.println("Campaign "+cname+" appears in the list");
+	    	
+	 }
 
 	//Check if on the first campaign appear Pin icon
 	public Home CheckFirstCampaignPinned(){
@@ -340,8 +348,6 @@ public class Home extends Base{
     		System.out.println("Number of shown campaigns is NOT equal to dashboard number");
     }
     
-    public void CheckifCampaignDeleted(String No) {
-    	
-    }
+   
     
 }

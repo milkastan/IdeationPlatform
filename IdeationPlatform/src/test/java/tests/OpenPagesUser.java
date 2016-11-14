@@ -35,12 +35,12 @@ public class OpenPagesUser extends BaseTest{
     	home.SelectMenuMyIdeasList();
     	//Change Dashboard filters and get numbers for campaigns
     	dashb=home.navigatetoDashboard();
-    	for (int i=0; i<4; i++) {
+    	for (int i=0; i<3; i++) {
     		 dashb.FilterOrgCampaigns(i);
     		 dashb.PrintDashboardCampaignsInfo();
     	}
     	dashb.FilterActiveCampaigns(1);
-    	for (int i=0; i<4; i++) {
+    	for (int i=0; i<3; i++) {
    		 dashb.FilterOrgCampaigns(i);
    		 dashb.PrintDashboardCampaignsInfo();
    	} 

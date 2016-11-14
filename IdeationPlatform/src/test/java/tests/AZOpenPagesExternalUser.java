@@ -6,16 +6,15 @@ import org.testng.annotations.Test;
 
 import common.DataproviderClass;
 
-public class OpenPagesCC extends BaseTest{
+public class AZOpenPagesExternalUser extends BaseTest{
 	@BeforeTest
 	public void setUp() {
 		PrintCurrentDateTime();
-    	System.out.println("Ideation Platform - Open all pages as Company Creator!");
+    	System.out.println("Ideation Platform Azure - Open all pages as External User!");
     	System.out.println("--------------------------------------------");
     	navigatetoIdeation ();
     	//ResizeBrowserWindow(760, 1280);
-    	
-    }
+     }
 	
     @AfterTest
     public void ShutDown() {
@@ -24,8 +23,8 @@ public class OpenPagesCC extends BaseTest{
     	System.out.println("--------------------------------");
     }
     
-    @Test(dataProvider="AZCC1",dataProviderClass=DataproviderClass.class)
-    public void OpenIDEPagesCC(String uname, String pass) {
+    @Test(dataProvider="ExtUser1",dataProviderClass=DataproviderClass.class)
+    public void CreateNewCampaign(String uname, String pass) {
     	home=SignIn(uname,pass);
     	//print all visible menus for user
     	home.PrintAllMenuItems();
@@ -36,19 +35,17 @@ public class OpenPagesCC extends BaseTest{
     	home.SelectMenuMyIdeasList();
     	//Change Dashboard filters and get numbers for campaigns
     	dashb=home.navigatetoDashboard();
-    	for (int i=0; i<4; i++) {
+    	for (int i=0; i<2; i++) {
     		 dashb.FilterOrgCampaigns(i);
     		 dashb.PrintDashboardCampaignsInfo();
     	}
     	dashb.FilterActiveCampaigns(1);
-    	for (int i=0; i<4; i++) {
-      		 dashb.FilterOrgCampaigns(i);
-      		 dashb.PrintDashboardCampaignsInfo();
-      	}  
-    	//Select menu Private Circles    
-    	home.navigatetoPrivateCircles();
+    	for (int i=0; i<2; i++) {
+   		 dashb.FilterOrgCampaigns(i);
+   		 dashb.PrintDashboardCampaignsInfo();
+   	} 
     	//Select menu Social Networks
-    	home.navigatetoSocialNetworks(4);
+    	home.navigatetoSocialNetworks(2);
     	//Select user profile
     	prof=home.SelectUserProfile();
     	prof.PrintUserDashboardInfo();

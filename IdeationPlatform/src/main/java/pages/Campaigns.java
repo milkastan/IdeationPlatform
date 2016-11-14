@@ -49,8 +49,7 @@ public class Campaigns extends Base{
 	WebElement ExportCampaignPDF;
 	@FindBy(how=How.XPATH, using="//*div/a[@id='MainCT_hlExcelExport']/img[@class='pull-right']")
 	WebElement ExportCampaignExcel;
-	@FindBy(how=How.XPATH, using="//div[@id='MainCT_divMoveIdea']/following-sibling::div[@class='custom_cell']")
-	WebElement GoToCampaign;
+
 
 	//View campaign text
 	@FindBy(how=How.XPATH, using="//*[@id='MainCT_lblCampaignName']")
@@ -59,10 +58,13 @@ public class Campaigns extends Base{
 	WebElement CampDesc;
 	
 	//Create new idea fields
+	@FindBy(how=How.ID, using="MainCT_tbIdeaTitle")
+	WebElement IdeaTitle;
 	@FindBy(how=How.ID, using="MainCT_chbPrivacy")
 	WebElement IdeaPrivacy;
-	@FindBy(how=How.ID, using="MainCT_btnSubmit2")
+	@FindBy(how=How.ID, using="MainCT_btnSubmit1")
 	WebElement SaveIdea;
+	
 	//Bold, italic, bullets for description  2 fields bold and italic
 	@FindBy(how=How.XPATH, using="//*[@class='k-tool-icon k-bold'])")
 	WebElement DescBoldBtn;
@@ -138,7 +140,7 @@ public class Campaigns extends Base{
     }
     
 	  public void PrintCampaignDashboardInfo() {
-	    	System.out.println("User Dashboard Info");
+	    	System.out.println("Campaign Dashboard Info");
 	    	System.out.println("-------------------------------------");
 	    	System.out.println("Campaign Views: "+GetCampaignViews());
 	     	System.out.println("Campaign Followers: "+GetCampaignFollowers());
@@ -147,6 +149,16 @@ public class Campaigns extends Base{
 	     	System.out.println("Campaign Avg Rating: "+GetCampaignAvgRating());
 	     	System.out.println("-------------------------------------");
 	    }
+	  
+	    //Check if ideas in the list is equal to number from Campaign dashboard
+/*	    public void CheckIdeasNumber(){
+	    	List<WebElement> cmp = Browser.driver.findElements(By.xpath("//*[@id='MainCT_tabCampaigns']/div/div/div/div"));
+	    	System.out.println("Number if campaigns is: "+cmp.size());
+	    	if (Integer.toString(cmp.size()).equalsIgnoreCase(GetHomeDashboardMyCampaigns())) {
+	    	    System.out.println("Number of campaigns in the list is equal to dashboard number (Campaigns I am invited to)");
+	    	} else
+	    		System.out.println("Number of shown campaigns is NOT equal to dashboard number");
+	    }*/
 	  
 	  public Campaigns DeleteCampaign(){
 		  System.out.println("Deleting campaign: "+CampTitle.getText());
@@ -194,6 +206,32 @@ public class Campaigns extends Base{
 		return this;
 	}
 	
+    public Ideas SubmitNewIdea(String title, boolean privacy) {
+    	SubmitIdea.click();
+    	WaitForVisibility(By.id("MainCT_lblTitle"),3);
+    	WebElement txt = Browser.driver.findElement(By.xpath("//td[@class='k-editable-area']/iframe"));
+		WebElement bbtn = Browser.driver.findElement(By.xpath("//*[@class='k-tool-icon k-bold']"));
+		WebElement ibtn = Browser.driver.findElement(By.xpath("//*[@class='k-tool-icon k-italic']"));
+		IdeaTitle.click();
+		IdeaTitle.sendKeys(title);
+		bbtn.click();   // bold button
+		txt.click();
+		txt.sendKeys("Description of idea for "+title);
+		txt.sendKeys(Keys.RETURN);
+		DescBulletsBtn.click();
+		ibtn.click();
+		txt.sendKeys("Selenium is a web application testing framework that allows you to write tests in many programming languages like  Java, C#, Groovy, Perl, PHP, Python and Ruby");
+		txt.sendKeys(Keys.RETURN);
+		txt.sendKeys("Selenium deploys on Windows, Linux, and MAC OS");
+		txt.sendKeys(Keys.RETURN);
+		if (privacy) {
+			IdeaPrivacy.click();
+		}
+		SaveIdea.click();
+		WaitForVisibility(By.id("MainCT_lblCampaignName"),3);	
+    	return new Ideas();
+    }
+	
 	//am = admin emails
     public Campaigns AddCampaignAdministgrator(String am) {
     	CampAdminField.sendKeys(am);
@@ -202,16 +240,6 @@ public class Campaigns extends Base{
     	return this;
     }
 
-/*	public Campaigns FillTitleDescription() {
-		List<WebElement> txt = Browser.driver.findElements(By.xpath("//td[@class='k-editable-area']/iframe"));
-		txt.get(0).click();
-		txt.get(0).sendKeys("This is title");
-		txt.get(1).click();
-		txt.get(1).sendKeys("This is description");
-		System.out.println("text boxs:"+txt.size());
-		return this;
-	}*/
-	
 	
 	public Circles FindUserstoCampaigClick() {
 		FindUsers.click();
@@ -268,32 +296,7 @@ public class Campaigns extends Base{
        	return new Ideas();
     }
     
-    public Ideas SubmitNewIdea(String title, boolean privacy) {
-    	SubmitIdea.click();
-    	WaitForVisibility(By.id("MainCT_lblTitle"),3);
-		List<WebElement> txt = Browser.driver.findElements(By.xpath("//td[@class='k-editable-area']/iframe"));
-		txt.get(0).click();
-		txt.get(0).sendKeys(title);
-		List<WebElement> bbtns = Browser.driver.findElements(By.xpath("//*[@class='k-tool-icon k-bold']"));
-		bbtns.get(1).click();
-		List<WebElement> ibtns = Browser.driver.findElements(By.xpath("//*[@class='k-tool-icon k-italic']"));
-		ibtns.get(1).click();
-		txt.get(1).click();
-		txt.get(1).sendKeys("Selenium is a web application testing framework that allows you to write tests in many programming languages like  Java, C#, Groovy, Perl, PHP, Python and Ruby.");
-		txt.get(1).sendKeys(Keys.RETURN);
-		DescBulletsBtn.click();
-		txt.get(1).sendKeys("Selenium deploys on Windows, Linux, and MAC OS");
-		txt.get(1).sendKeys(Keys.RETURN);
-		txt.get(1).sendKeys("WebDriver is a web automation framework that allows you to execute your tests against different browsers");
-				
-		if (privacy) {
-			IdeaPrivacy.click();
-		}
-		SaveIdea.click();
-		WaitForVisibility(By.id("MainCT_lblCampaignName"),3);	
-    	return new Ideas();
-    }
-    
+   
     public Campaigns FollowCampaign(){
     	System.out.println("Click on Follow Campaign!");
     	if (FollowCampaign.getText().equalsIgnoreCase("Follow Campaign")) {

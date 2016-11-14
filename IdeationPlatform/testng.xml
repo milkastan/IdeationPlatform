@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  <test name="Test">
+<suite name="IDETEST">
+<!--  <test name="ICBTests">
     <classes>
       <class name="tests.OpenPagesSysAdmin"/>
       <class name="tests.OpenPagesCC"/>
@@ -10,4 +10,16 @@
       <class name="tests.ManageCampaign"/>      
     </classes>
   </test> <!-- Test -->
+  
+    <test name="AZURETests">
+    <classes>
+      <class name="tests.AZOpenPagesSysAdmin"/>
+      <class name="tests.AZOpenPagesCC"/>
+      <class name="tests.AZOpenPagesUser"/>
+      <class name="tests.AZManageCampaign"/>      
+    </classes>
+  </test> <!-- Test -->
 </suite> <!-- Suite -->
+
+
+

@@ -4,7 +4,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import common.Common;
 import common.DataproviderClass;
 
 
@@ -46,18 +45,9 @@ public class IPTest1 extends BaseTest{
     	//delete campaign
     	//home.navigatetoHome();
     	camp=home.ViewFirstCampaign();
-    	//camp.DeleteCampaign();
-    	//Select Administration
-    	//adm=home.navigatetoAdministration();
-    //	adm.SelectManageCircles();
-    //	adm=home.navigatetoAdministration();
-    //	adm.SelectUsersAdministration();
-    	//Select user profile
-    	//prof=home.SelectUserProfile();
-    	//prof.PrintUserDashboardInfo();
-    	//prof.SelectIdeaCommentsTAB(1);
-    	//prof.SelectIdeaCommentsTAB(0);
-    	camp.DeleteCampaign();
+    	//camp.SubmitNewIdea("Idea for test automation tool", false);
+    	//camp.SubmitNewIdea("Private idea for test automation tool", true);
+
    }
     
 /*    @Test(dataProvider="Administrator",dataProviderClass=DataproviderClass.class)

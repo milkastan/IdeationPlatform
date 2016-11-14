@@ -5,15 +5,29 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import pages.*;
+import pages.Administration;
+import pages.Browser;
+import pages.Campaigns;
+import pages.Circles;
+import pages.Dashboard;
+import pages.Discussions;
+import pages.Home;
+import pages.Ideas;
+import pages.Login;
+import pages.UserProfile;
+import pages.Users;
+
 import common.ExcelDataConfig;
 import common.GenerateData;
 
 
 public class BaseTest {
+	//Konica Azure
 	
+	//ICB Azure Environment
+	String   azidpurl="https://ideatest.azurewebsites.net";
+	//ICB Test environment
     String   idpurl="https://ideation.icb.bg/RLS/Login.aspx";
     String	 picturepath="D:\\00-DISK-D\\IdeationPlatform\\Pictures\\tn_DSC02492.jpg";
     String	 docpath="D:\\00-DISK-D\\IdeationPlatform\\Pictures\\Transition-9K-14K-2015-R4.pdf";
@@ -29,9 +43,7 @@ public class BaseTest {
     Campaigns		 camp;
     Ideas		     ide;
     
-    String		username="msicb2";
-    String 		password="123456";
-    
+    ExcelDataConfig azcamps = new ExcelDataConfig("D:\\00-DISK-D\\WebDriver PXC Projects\\IdeationPlatform\\AZCampaigns.xlsx"); 
     ExcelDataConfig camps = new ExcelDataConfig("D:\\00-DISK-D\\WebDriver PXC Projects\\IdeationPlatform\\campaigns.xlsx"); 	 
     ExcelDataConfig users = new ExcelDataConfig("D:\\00-DISK-D\\WebDriver PXC Projects\\IdeationPlatform\\UsersDataExcel.xlsx"); 			 
 	GenerateData gendata = new GenerateData();
@@ -49,6 +61,11 @@ public class BaseTest {
 	public void navigatetoIdeation () {
 		RunBrowser();
 		Browser.driver.get(idpurl);
+	}
+	
+	public void navigatetoIdeationAZTest1 () {
+		RunBrowser();
+		Browser.driver.get(azidpurl);
 	}
 	
 	public void ResizeBrowserWindow(int width, int height) {

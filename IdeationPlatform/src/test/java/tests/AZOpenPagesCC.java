@@ -6,13 +6,13 @@ import org.testng.annotations.Test;
 
 import common.DataproviderClass;
 
-public class OpenPagesCC extends BaseTest{
+public class AZOpenPagesCC extends BaseTest{
 	@BeforeTest
 	public void setUp() {
 		PrintCurrentDateTime();
-    	System.out.println("Ideation Platform - Open all pages as Company Creator!");
+    	System.out.println("Ideation Platform Azure- Open all pages as Company Creator!");
     	System.out.println("--------------------------------------------");
-    	navigatetoIdeation ();
+    	navigatetoIdeationAZTest1 ();
     	//ResizeBrowserWindow(760, 1280);
     	
     }
@@ -24,8 +24,8 @@ public class OpenPagesCC extends BaseTest{
     	System.out.println("--------------------------------");
     }
     
-    @Test(dataProvider="AZCC1",dataProviderClass=DataproviderClass.class)
-    public void OpenIDEPagesCC(String uname, String pass) {
+    @Test(dataProvider="CompanyCreator",dataProviderClass=DataproviderClass.class)
+    public void CreateNewCampaign(String uname, String pass) {
     	home=SignIn(uname,pass);
     	//print all visible menus for user
     	home.PrintAllMenuItems();

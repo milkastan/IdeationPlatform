@@ -14,17 +14,22 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Ideas extends Base{
 	//Idea Actions
+	@FindBy(how=How.ID, using="MainCT_hlnkSubmitComment")
+	WebElement SubmitComment;
 	@FindBy(how=How.ID, using="MainCT_hlnkEditIdea")
 	WebElement EditIdea;
 	@FindBy(how=How.ID, using="MainCT_lnkDeleteIdea")
 	WebElement DeleteIdea;
-
 	@FindBy(how=How.ID, using="MainCT_lnkFollowIdea")
 	WebElement FollowIdea;
-	@FindBy(how=How.ID, using="MainCT_hlnkSubmitComment")
-	WebElement SubmitComment;
 	@FindBy(how=How.ID, using="MainCT_divMoveIdea")
 	WebElement MoveIdea;
+	@FindBy(how=How.XPATH, using="//div[@id='MainCT_divMoveIdea']/following-sibling::div[@class='custom_cell']")
+	WebElement GoToCampaign;
+	//Export Idea to excel
+	@FindBy(how=How.ID, using="MainCT_hlnkExportIdea")
+	WebElement ExportIdea;
+	
 	//Idea details
 	@FindBy(how=How.ID, using="MainCT_lblIdeaName")
 	WebElement IdeaName;
@@ -44,11 +49,50 @@ public class Ideas extends Base{
 	WebElement CommentsSaveBtn;
 	@FindBy(how=How.XPATH, using="MainCT_btnCancel")
 	WebElement CommentsCancelBtn;
+	
+	//Idea dashboard statistics
+	@FindBy(how=How.ID, using="MainCT_ucIdeaCounts_repStats_lblStatValue_0")
+	WebElement IdeaViews;
+	@FindBy(how=How.ID, using="MainCT_ucIdeaCounts_repStats_lblStatValue_1")
+	WebElement IdeaFollowers;
+	@FindBy(how=How.ID, using="MainCT_ucIdeaCounts_repStats_lblStatValue_2")
+	WebElement IdeaComments;
+	@FindBy(how=How.ID, using="MainCT_ucIdeaCounts_repStats_lblStatValue_3")
+	WebElement IdeaRatings;
 
-		
 	public Ideas() {
 		PageFactory.initElements(Browser.driver, this);
 	}
+	
+	public String GetIdeaViews() {
+    	String d = IdeaViews.getText();
+    	return d;
+    }
+    
+    public String GetIdeaFollowers() {
+    	String d = IdeaFollowers.getText();
+    	return d;
+    }
+    
+    public String GetIdeaComments() {
+    	String d = IdeaComments.getText();
+    	return d;
+    }
+    
+    public String GetIdeaRatings() {
+    	String d = IdeaRatings.getText();
+    	return d;
+    }
+	
+    public void PrintIdeaDashboardInfo() {
+    	System.out.println("Idea Dashboard Info");
+    	System.out.println("-------------------------------------");
+    	System.out.println("Idea Views: "+GetIdeaViews());
+     	System.out.println("Idea Followers: "+GetIdeaFollowers());
+       	System.out.println("Idea Comments: "+GetIdeaComments());
+     	System.out.println("Idea Ratings: "+GetIdeaRatings());
+     	System.out.println("-------------------------------------");
+    }
 	
      public  Ideas SubmitComment(String com) {
     	 SubmitComment.click();
@@ -138,6 +182,13 @@ public class Ideas extends Base{
     	}  
     	return this;
     }
+    
+    public Campaigns GotoCampaign() {
+    	GoToCampaign.click();
+    	WaitForVisibility(By.id("MainCT_lblCampaignName"),2);
+    	return new Campaigns();
+    }
+    
     
     public Ideas UnfollowIdea(){
     	System.out.println(FollowIdea.getText());

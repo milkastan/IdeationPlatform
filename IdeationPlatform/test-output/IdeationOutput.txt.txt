@@ -1,177 +1,82 @@
 [TestNG] Running:
-  C:\Users\milka.stankova\AppData\Local\Temp\testng-eclipse--916194107\testng-customsuite.xml
+  C:\Users\milka.stankova\AppData\Local\Temp\testng-eclipse-113876265\testng-customsuite.xml
 
-Current date&time: 24/10/2016 13:33:01
+Current date&time: 25/10/2016 17:35:47
 Ideation Platform - Open all pages as User!
 --------------------------------------------
-Starting ChromeDriver 2.23.409699 (49b0fa931cda1caad0ae15b7d1b68004acd05129) on port 17003
+Starting ChromeDriver 2.23.409699 (49b0fa931cda1caad0ae15b7d1b68004acd05129) on port 35333
 Only local connections are allowed.
-Oct 24, 2016 1:33:01 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+Oct 25, 2016 5:35:48 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Attempting bi-dialect session, assuming Postel's Law holds true on the remote end
-Oct 24, 2016 1:33:03 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+Oct 25, 2016 5:35:50 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: OSS
-user:icb2user1, password:123456 logged in Ideation Platform
---------------------------------------------
-Ideation Platform Home page is opened
-**** Login time: 1589
-Visible menus for user
--------------------------
-Home
-Dashboard
-Social Networks
+FAILED CONFIGURATION: @BeforeTest setUp
+org.openqa.selenium.NoSuchSessionException: no such session
+  (Driver info: chromedriver=2.23.409699 (49b0fa931cda1caad0ae15b7d1b68004acd05129),platform=Windows NT 10.0.10240 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 14 milliseconds
+Build info: version: '3.0.0', revision: '350cf60', time: '2016-10-13 10:48:57 -0700'
+System info: host: 'VDI-054', ip: '192.168.13.58', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_92'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{message=session not created exception
+from unknown error: Runtime.executionContextCreated has invalid 'context': {"auxData":{"frameId":"19884.1","isDefault":true},"id":1,"name":"","origin":"://"}
+  (Session info: chrome=54.0.2840.71)
+  (Driver info: chromedriver=2.23.409699 (49b0fa931cda1caad0ae15b7d1b68004acd05129),platform=Windows NT 10.0.10240 x86_64), platform=ANY}]
+Session ID: cd81caba0e15b3de3ce6edf401558b10
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:216)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:168)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:635)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:658)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions.deleteAllCookies(RemoteWebDriver.java:730)
+	at pages.Browser.initChrome(Browser.java:51)
+	at tests.BaseTest.RunBrowser(BaseTest.java:42)
+	at tests.BaseTest.navigatetoIdeation(BaseTest.java:50)
+	at tests.OpenPagesUser.setUp(OpenPagesUser.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:514)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:215)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.TestRunner.beforeRun(TestRunner.java:656)
+	at org.testng.TestRunner.run(TestRunner.java:624)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:152)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:57)
 
-
-
-Selected filter for campaigns :Active
--------------------------------------
-Number if campaigns is: 13
-Number of campaigns in the list is equal to dashboard number (Campaigns I am invited to)
-Ideation Home Campaigns Dashboard Info
--------------------------------------
-My Campaigns:13
-My Ideas:7
-My Comments:2
-My Average rating:3.3
--------------------------------------
-Selected filter for campaigns :All
--------------------------------------
-Number if campaigns is: 40
-Number of campaigns in the list is equal to dashboard number (Campaigns I am invited to)
-Ideation Home Campaigns Dashboard Info
--------------------------------------
-My Campaigns:40
-My Ideas:38
-My Comments:32
-My Average rating:3.3
--------------------------------------
-Selected filter for campaigns :Inactive
--------------------------------------
-Number if campaigns is: 27
-Number of campaigns in the list is equal to dashboard number (Campaigns I am invited to)
-Ideation Home Campaigns Dashboard Info
--------------------------------------
-My Campaigns:27
-My Ideas:31
-My Comments:30
-My Average rating:3.0
--------------------------------------
-Selected filter for campaigns :Upcoming
--------------------------------------
-Number if campaigns is: 0
-Number of campaigns in the list is equal to dashboard number (Campaigns I am invited to)
-Ideation Home Campaigns Dashboard Info
--------------------------------------
-My Campaigns:0
-My Ideas:0
-My Comments:0
-My Average rating:0
--------------------------------------
-Select Home menu Home/Recent ideas
--------------------------------------
-Select Home menu Home/My ideas
--------------------------------------
-Selected menu Dashboard
--------------------------------------
-Selected filter :Entire organization
--------------------------------------
-Ideation Dashboard Campaigns Info
-My Campaigns:46
-My Ideas:6914
-My Comments:10222
-My Average rating:520
--------------------------------------
-Selected filter :My campaigns
--------------------------------------
-Ideation Dashboard Campaigns Info
-My Campaigns:2
-My Ideas:7
-My Comments:7
-My Average rating:6
--------------------------------------
-Selected filter :Campaings I am invited to
--------------------------------------
-Ideation Dashboard Campaigns Info
-My Campaigns:40
-My Ideas:6639
-My Comments:9967
-My Average rating:519
--------------------------------------
-Selected filter :Followed campaigns
--------------------------------------
-Ideation Dashboard Campaigns Info
-My Campaigns:2
-My Ideas:271
-My Comments:253
-My Average rating:297
--------------------------------------
-Selected filter :Active Campaigns
--------------------------------------
-Selected filter :Entire organization
--------------------------------------
-Ideation Dashboard Campaigns Info
-My Campaigns:19
-My Ideas:1994
-My Comments:2037
-My Average rating:518
--------------------------------------
-Selected filter :My campaigns
--------------------------------------
-Ideation Dashboard Campaigns Info
-My Campaigns:2
-My Ideas:7
-My Comments:7
-My Average rating:6
--------------------------------------
-Selected filter :Campaings I am invited to
--------------------------------------
-Ideation Dashboard Campaigns Info
-My Campaigns:13
-My Ideas:1719
-My Comments:1782
-My Average rating:510
--------------------------------------
-Selected filter :Followed campaigns
--------------------------------------
-Ideation Dashboard Campaigns Info
-My Campaigns:0
-My Ideas:0
-My Comments:0
-My Average rating:0
--------------------------------------
-Selected menu Social Networks
--------------------------------------
-Selected menu My Profile
--------------------------------------
-User Dashboard Info
--------------------------------------
-User last login: 24/10/2016
-Started campaigns: 0
-Ideas submitted: 39
-Comments submitted: 32
-Ratings made: 5
-Ratings made: Rating 3.5 (6 votes)
--------------------------------------
-Selected menu Comments on My Profile
-----------------------
-Finished Ideation Platform test!
-Current date&time: 24/10/2016 13:33:54
---------------------------------
-PASSED: CreateNewCampaign("icb2user1", "123456")
+SKIPPED CONFIGURATION: @AfterTest ShutDown
+SKIPPED: CreateNewCampaign("icb2user1", "123456")
 
 ===============================================
     Default test
-    Tests run: 1, Failures: 0, Skips: 0
+    Tests run: 1, Failures: 0, Skips: 1
+    Configuration Failures: 1, Skips: 1
 ===============================================
 
 
 ===============================================
 Default suite
-Total tests run: 1, Failures: 0, Skips: 0
+Total tests run: 1, Failures: 0, Skips: 1
+Configuration Failures: 1, Skips: 1
 ===============================================
 
-[TestNG] Time taken by org.testng.reporters.SuiteHTMLReporter@60f82f98: 30 ms
-[TestNG] Time taken by org.testng.reporters.EmailableReporter2@7a5d012c: 4 ms
-[TestNG] Time taken by org.testng.reporters.jq.Main@edf4efb: 29 ms
-[TestNG] Time taken by org.testng.reporters.XMLReporter@3d8c7aca: 4 ms
+[TestNG] Time taken by org.testng.reporters.SuiteHTMLReporter@60f82f98: 29 ms
+[TestNG] Time taken by org.testng.reporters.EmailableReporter2@7a5d012c: 6 ms
+[TestNG] Time taken by org.testng.reporters.jq.Main@edf4efb: 31 ms
+[TestNG] Time taken by org.testng.reporters.XMLReporter@3d8c7aca: 5 ms
 [TestNG] Time taken by [FailedReporter passed=0 failed=0 skipped=0]: 6 ms
 [TestNG] Time taken by org.testng.reporters.JUnitReportReporter@6b2fad11: 4 ms
