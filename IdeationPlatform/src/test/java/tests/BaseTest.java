@@ -6,17 +6,7 @@ import java.util.Date;
 
 import org.openqa.selenium.Dimension;
 
-import pages.Administration;
-import pages.Browser;
-import pages.Campaigns;
-import pages.Circles;
-import pages.Dashboard;
-import pages.Discussions;
-import pages.Home;
-import pages.Ideas;
-import pages.Login;
-import pages.UserProfile;
-import pages.Users;
+import pages.*;
 
 import common.ExcelDataConfig;
 import common.GenerateData;
@@ -43,9 +33,11 @@ public class BaseTest {
     Campaigns		 camp;
     Ideas		     ide;
     
-    ExcelDataConfig azcamps = new ExcelDataConfig("D:\\00-DISK-D\\WebDriver PXC Projects\\IdeationPlatform\\AZCampaigns.xlsx"); 
-    ExcelDataConfig camps = new ExcelDataConfig("D:\\00-DISK-D\\WebDriver PXC Projects\\IdeationPlatform\\campaigns.xlsx"); 	 
-    ExcelDataConfig users = new ExcelDataConfig("D:\\00-DISK-D\\WebDriver PXC Projects\\IdeationPlatform\\UsersDataExcel.xlsx"); 			 
+    ExcelDataConfig azcamps = new ExcelDataConfig("D:\\00-DISK-D\\WebDriver PXC Projects\\IdeationLocal\\IdeationPlatform\\AZCampaigns.xlsx"); 
+    ExcelDataConfig camps = new ExcelDataConfig("D:\\00-DISK-D\\WebDriver PXC Projects\\IdeationLocal\\deationPlatform\\campaigns.xlsx"); 	 
+    ExcelDataConfig users = new ExcelDataConfig("D:\\00-DISK-D\\WebDriver PXC Projects\\IdeationLocal\\IdeationPlatform\\UsersData.xlsx");
+       
+   
 	GenerateData gendata = new GenerateData();
 	private Date date;
 	
@@ -63,7 +55,7 @@ public class BaseTest {
 		Browser.driver.get(idpurl);
 	}
 	
-	public void navigatetoIdeationAZTest1 () {
+	public void navigatetoIdeationICBAZ () {
 		RunBrowser();
 		Browser.driver.get(azidpurl);
 	}
@@ -107,6 +99,5 @@ public class BaseTest {
         //return string with current date and time             
         System.out.println("Current date&time: "+date1);
 	 }
-	
 	
 }

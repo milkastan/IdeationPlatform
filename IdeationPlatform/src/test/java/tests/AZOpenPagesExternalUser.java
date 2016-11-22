@@ -12,7 +12,7 @@ public class AZOpenPagesExternalUser extends BaseTest{
 		PrintCurrentDateTime();
     	System.out.println("Ideation Platform Azure - Open all pages as External User!");
     	System.out.println("--------------------------------------------");
-    	navigatetoIdeation ();
+    	navigatetoIdeationICBAZ();
     	//ResizeBrowserWindow(760, 1280);
      }
 	
@@ -21,9 +21,10 @@ public class AZOpenPagesExternalUser extends BaseTest{
     	System.out.println("Finished Ideation Platform test!");
     	PrintCurrentDateTime();
     	System.out.println("--------------------------------");
+    	QuitBrowser();
     }
     
-    @Test(dataProvider="ExtUser1",dataProviderClass=DataproviderClass.class)
+    @Test(dataProvider="AZExtUser1",dataProviderClass=DataproviderClass.class)
     public void CreateNewCampaign(String uname, String pass) {
     	home=SignIn(uname,pass);
     	//print all visible menus for user
@@ -50,6 +51,6 @@ public class AZOpenPagesExternalUser extends BaseTest{
     	prof=home.SelectUserProfile();
     	prof.PrintUserDashboardInfo();
     	prof.SelectIdeaCommentsTAB(1);
-    	//prof.SelectIdeaCommentsTAB(0);
+    	prof.OpenEditMyProfile();
      }	
 }

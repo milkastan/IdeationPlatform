@@ -38,21 +38,30 @@ public class DataproviderClass {
 	@DataProvider(name="AZSA1")
 	public  static Object[][]  getAZSA1(){
 		return new Object[][] { 
-				{"koadmin","123456"}  
+				{"saicbaz","123456"}  
 			};
      }
 	
 	@DataProvider(name="AZCC1")
 	public  static Object[][]  getAZCC1(){
 		return new Object[][] { 
-				{"kocc","123456"}  
+				{"icbazcc","123456"}  
 			};
      }
 
 	@DataProvider(name="AZUser1")
 	public  static Object[][]  getAZUser1(){
 		return new Object[][] { 
-				{"azuser1","123456"}  
+				{"icbazuser1","123456"}  
 			};
      }
+	
+	@DataProvider(name="AZExtUser1")
+	public  static Object[][]  getAZExtUser1(){
+		return new Object[][] { 
+				{"icbazextuser1","123456"}  
+			};
+     }
+	
+
 }

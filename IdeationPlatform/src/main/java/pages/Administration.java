@@ -20,6 +20,7 @@ public class Administration extends Base{
 	public Users SelectUsersAdministration() {
 		UserAdminBtn.click();
 		WaitForVisibility(By.id("MainCT_lblTitle"),3);
+		System.out.println("Selected menu Users Management");
 		System.out.println("-------------------------------------");
     	try {
 			Thread.sleep(2000);

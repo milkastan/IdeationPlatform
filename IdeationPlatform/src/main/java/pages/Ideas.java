@@ -104,6 +104,12 @@ public class Ideas extends Base{
     	 Browser.SwitchToMain();
     	 System.out.println("Added comment for idea!");
     	 WaitForVisibility(By.id("MainCT_lblIdeaName"),3);
+    	 try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	 return this;
     }
      

@@ -45,40 +45,41 @@ public class ManageCampaign extends BaseTest{
         //cir.SelectCircletoCampaign("TestCircle");
         camp.PublishCampaign();
         //end of create new campaign
-     
         //Edit campaign - menu from Actions View campaing page
+    	camp=home.ViewFirstCampaign();
     	camp.EditCampaign();  
       	
     	//Follow campaign - Actions commands
        String fc1 = camp.GetCampaignFollowers();
        camp.FollowCampaign();
        String fc2 = camp.GetCampaignFollowers();
-       camp.CheckFollowCampaignNum(fc1, fc2);
+       camp.AssertIncreatingFollowCampaign(fc1, fc2);
        //Unfollow campaign  
        String fc3 = camp.GetCampaignFollowers();
        camp.UnfollowCampaign();
        String fc4 = camp.GetCampaignFollowers();
-       camp.CheckFollowCampaignNum(fc3, fc4);	   
+       camp.AssertDecreasingFollowCampaign(fc3, fc4);	   
       
        //Test Pin-Unpin Campaign
-       home.navigatetoHome();                
+       home.navigatetoHome();    
+       int cnum=home.GetNumberofCampaigns();
+       String cname1 = home.GetCampaignNamebyNo(0);
+ 
    	  //Find campaign number by name and view campaign
-        String cname="ICB2 Campaign 40";
-    	int cnum=home.FindCampNumber(cname);
-   	    if (cnum != -1){
-   	    camp=home.ViewCampaign(cnum);}
+        String cname2=home.GetCampaignNamebyNo(cnum-1);
+   	    camp=home.ViewCampaignbyNo(cnum);
    	    //Pin campaign and check on the Home list
    	    //if pinned campaign is on the first position
    	    camp.PinCampaign();
    	    home.navigatetoHome();
-        home.CheckFirstCampaignByName(cname);
+        home.CheckFirstCampaignByName(cname2);
         home.CheckFirstCampaignPinned();
         //View first campaign and unpin
         //Campaign should not be on the first position
         camp=home.ViewFirstCampaign();
         camp.UnpinCampaign();
         home.navigatetoHome();
-        home.CheckFirstCampaignByName(cname);
+        home.CheckFirstCampaignByName(cname1);
         //share campaign
        	camp=home.ViewFirstCampaign();
     	camp.ShareCampaign();

@@ -8,6 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import static org.hamcrest.Matchers.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.testng.AssertJUnit.assertTrue;
 
 public class Campaigns extends Base{
 	@FindBy(how=How.ID, using="MainCT_tbCampaignTitle")
@@ -206,7 +209,7 @@ public class Campaigns extends Base{
 		return this;
 	}
 	
-    public Ideas SubmitNewIdea(String title, boolean privacy) {
+    public Ideas SubmitNewIdea(String title, String desc,boolean privacy) {
     	SubmitIdea.click();
     	WaitForVisibility(By.id("MainCT_lblTitle"),3);
     	WebElement txt = Browser.driver.findElement(By.xpath("//td[@class='k-editable-area']/iframe"));
@@ -216,14 +219,14 @@ public class Campaigns extends Base{
 		IdeaTitle.sendKeys(title);
 		bbtn.click();   // bold button
 		txt.click();
-		txt.sendKeys("Description of idea for "+title);
+		txt.sendKeys("Description of idea: "+title);
 		txt.sendKeys(Keys.RETURN);
 		DescBulletsBtn.click();
 		ibtn.click();
-		txt.sendKeys("Selenium is a web application testing framework that allows you to write tests in many programming languages like  Java, C#, Groovy, Perl, PHP, Python and Ruby");
+		txt.sendKeys(desc);
 		txt.sendKeys(Keys.RETURN);
-		txt.sendKeys("Selenium deploys on Windows, Linux, and MAC OS");
-		txt.sendKeys(Keys.RETURN);
+		//txt.sendKeys("Selenium deploys on Windows, Linux, and MAC OS");
+		//txt.sendKeys(Keys.RETURN);
 		if (privacy) {
 			IdeaPrivacy.click();
 		}
@@ -234,6 +237,7 @@ public class Campaigns extends Base{
 	
 	//am = admin emails
     public Campaigns AddCampaignAdministgrator(String am) {
+    	CampAdminField.clear();
     	CampAdminField.sendKeys(am);
     	System.out.println("Campaign Administrator email: "+am);
     	System.out.println("-------------------------------------");
@@ -274,10 +278,9 @@ public class Campaigns extends Base{
 		    SubmitCampaign.click();
 		}
 		WaitForVisibility(By.id("MainCT_lblCampaignName"),3);	
-		if (CampTitle.getText().equalsIgnoreCase(camptitle+" Changed")){
-			System.out.println("Campaign is edited successfully");
-			System.out.println("----------------------------------");
-		}
+		CompareText(CampTitle.getText(),camptitle+" Changed");
+		System.out.println("Assert if campaign title is changed");
+		System.out.println("------------------------------");
 		return this;
 	}
 	
@@ -317,17 +320,20 @@ public class Campaigns extends Base{
     	return this;
     }
     
-    public Campaigns CheckFollowCampaignNum(String fc1, String fc2) {
-        if (Integer.parseInt(fc2)==(Integer.parseInt(fc1)+1)) {
-        	System.out.println("Followed campaing number on dashboard has increased by one after Follow Campaign!");
-        }else if (Integer.parseInt(fc2)==(Integer.parseInt(fc1)-1)) {
-        	System.out.println("Followed campaing number on dashboard has decreased by one by Unfollow Campaign!");
-        }else {
-        	System.out.println("Dashboard Followed is not updated!");
-        }
-        System.out.println("-------------------------------------------");
+    public Campaigns AssertIncreatingFollowCampaign(String fc1, String fc2) {
+    	assertThat(Integer.parseInt(fc1),is(Integer.parseInt(fc2)-1));
+    	System.out.println("Assert that follow campaign is increased");
+    	System.out.println("----------------------------------");
     	return this;
     }
+    
+    public Campaigns AssertDecreasingFollowCampaign(String fc1, String fc2) {
+    	assertThat(Integer.parseInt(fc1),is(Integer.parseInt(fc2)+1));
+    	System.out.println("Assert that follow campaign is decreased");
+    	System.out.println("----------------------------------");
+    	return this;
+    }
+      
 
     public Campaigns UnfollowCampaign(){
     	System.out.println("Click on Unfollow Campaign!");

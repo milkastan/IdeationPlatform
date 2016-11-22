@@ -9,6 +9,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+
+import static org.hamcrest.Matchers.*;
+import static org.hamcrest.MatcherAssert.*;
 import static org.testng.AssertJUnit.assertTrue;
 
 public class Home extends Base{
@@ -38,7 +41,7 @@ public class Home extends Base{
 	@FindBy(how=How.XPATH, using="//*[@class='navbar-toggle']")
 	WebElement MenuBtn;
 	//total campaigns shown on home page
-	//@FindBy(how=How.XPATH, using="//*[@id='MainCT_tabCampaigns']/div/div/div/div")
+	@FindBy(how=How.XPATH, using="//*[@id='MainCT_tabCampaigns']/div/div/div/div")
 	WebElement AllHomeCamp;
 	@FindBy(how=How.ID, using="MainCT_lvCampaigns_ctrl0_PinIcon_0")
 	WebElement PinIcon;
@@ -50,30 +53,17 @@ public class Home extends Base{
 	//Check by name if campaign is on the first position
 	public Home CheckFirstCampaignByName(String cname) {
 		WebElement ct = Browser.driver.findElement(By.id("MainCT_lvCampaigns_ctrl0_lblCampTitle_0"));
-		if (ct.getText().equalsIgnoreCase(cname)) {
-			System.out.println("Campaign with title: "+cname+" is pinned at the first position");
-		} else {
-			System.out.println("Campaign with title: "+cname+" is not at the first position");
-		}
-			System.out.println("---------------------------------");
+		System.out.println("Assert campaign is at the first position");
+		CompareText(ct.getText(),cname);
+		System.out.println("---------------------------------");
 		return this;
 	}
 	
-	 public void VerifyFirstCampaignByName(String cname) {
-		WebElement ct = Browser.driver.findElement(By.id("MainCT_lvCampaigns_ctrl0_lblCampTitle_0"));
-		assertTrue("Company is not at the first possition",(ct.getText().equalsIgnoreCase(cname)));
-		System.out.println("Campaign "+cname+" appears in the list");
-	    	
-	 }
 
 	//Check if on the first campaign appear Pin icon
 	public Home CheckFirstCampaignPinned(){
-		if (PinIcon.isDisplayed()) {
-			System.out.println("First campaing is marked with pin icon");
-		
-		}else {
-			System.out.println("First campaing is NOT marked with pin icon");
-		}
+		System.out.println("Assert that campaing is marked with pin icon");
+		assertTrue(PinIcon.isDisplayed());
 		System.out.println("---------------------------------");
 	return this;
 	}
@@ -290,6 +280,11 @@ public class Home extends Base{
     	return d;
     }
     
+    public int GetNumberofCampaigns(){
+    	List<WebElement> cmp = Browser.driver.findElements(By.xpath("//*[@id='MainCT_tabCampaigns']/div/div/div/div"));
+    	return cmp.size();
+    }
+    
     public void PrintHomeCampaignsInfo() {
     	System.out.println("Ideation Home Campaigns Dashboard Info");
     	System.out.println("-------------------------------------");
@@ -300,7 +295,7 @@ public class Home extends Base{
      	System.out.println("-------------------------------------");
     }
     
-    public Campaigns ViewCampaign(int i){
+    public Campaigns ViewCampaignbyNo(int i){
     	System.out.println("View campaign with number "+i);
     	WebElement cm = Browser.driver.findElement(By.id("MainCT_lvCampaigns_ctrl"+String.valueOf(i)+"_lblCampTitle_"+String.valueOf(i)));
     	cm.click();
@@ -309,9 +304,22 @@ public class Home extends Base{
        	return new Campaigns();
     }
     
+    public String GetCampaignNamebyNo(int i){
+    	System.out.println("Get name of campaign number "+i);
+    	WebElement cm = Browser.driver.findElement(By.id("MainCT_lvCampaigns_ctrl"+String.valueOf(i)+"_lblCampTitle_"+String.valueOf(i)));
+       	return cm.getText();
+    }
+    
     public Campaigns ViewFirstCampaign(){
+    	try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	System.out.println("View first campaign");
-    	WebElement cm = Browser.driver.findElement(By.id("MainCT_lvCampaigns_ctrl0_lblCampTitle_0"));                                       
+    	WebElement cm = Browser.driver.findElement(By.id("MainCT_lvCampaigns_ctrl0_lblCampTitle_0"));  
+    	WaitForClickable(cm, 5);
     	cm.click();
     	WaitForVisibility(By.id("MainCT_lblCampaignName"),30);
     	System.out.println("-------------------------------------------");

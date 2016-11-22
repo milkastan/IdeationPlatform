@@ -1,5 +1,9 @@
 package pages;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
+
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -16,10 +20,23 @@ public class Base {
 	Actions actions = new Actions(Browser.driver); 
 	WebDriverWait wait = new WebDriverWait(Browser.driver, 30);
 	
+    
+    public void CompareText(String act, String exp) {
+    	assertThat(act,is(equalTo(exp)));
+    }
+    
+    public void AssertArraySize(List<WebElement> list, int x){
+    	System.out.println("Comparing size of array list");
+    	assertThat(list,hasSize(x));
+    }
 		
 	 public void visit (String url){Browser.driver.get(url); 	}
 	 
 	 public  WebElement find (By locator){ return Browser.driver.findElement(locator); 	}
+	 
+	 public String GetElementText(By locator) {
+		 return find(locator).getText();
+	 }
 	 
 	 public  void click(By locator){	find(locator).click(); 	}
 	 
@@ -122,6 +139,5 @@ public class Base {
 		    WebElement CopyURLBtn = Browser.driver.findElement(By.id("btnCopyToClipboard"));
 		    CopyURLBtn.click();  	
 		  }
-	    
-	    
+
 }

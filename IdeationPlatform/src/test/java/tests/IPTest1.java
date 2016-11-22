@@ -12,7 +12,8 @@ public class IPTest1 extends BaseTest{
 	public void setUp() {
     	System.out.println("Ideation Platform - Start test!");
     	System.out.println("--------------------------------------------");
-    	navigatetoIdeation ();
+    	//navigatetoIdeation ();
+    	navigatetoIdeationICBAZ();
     	//ResizeBrowserWindow(760, 1280);
     	
     }
@@ -22,22 +23,23 @@ public class IPTest1 extends BaseTest{
     	System.out.println("Finished Ideation Platform test!");
     }
    	
-  /*  	@Test
-    	public void RunIdeationTest1 () {
-    	  
-    		home=SignIn(username,password);
+/*    @Test(dataProvider="AZSA1",dataProviderClass=DataproviderClass.class)
+    	public void CreateUsers(String uname, String pass) {
+    	  	home=SignIn(uname,pass);
     		adm=home.navigatetoAdministration();
-    		usr=adm.ViewUsers();
-    		for (int i=1; i<20; i++) {
+    		usr=adm.SelectUsersAdministration();
+    		for (int i=81; i<131; i++) {
     		String un=users.getData(0, i, 0);
     		String fn=users.getData(0, i, 1);
     		String ln=users.getData(0, i, 2);
     		String em=users.getData(0, i, 3);
+     		System.out.println(un+" "+fn+" "+ln+" "+em);
     		usr.CreateNewUser(un, fn, ln, em);
     		}
+    	   
     	}*/
     
-   @Test(dataProvider="Administrator",dataProviderClass=DataproviderClass.class)
+  /* @Test(dataProvider="Administrator",dataProviderClass=DataproviderClass.class)
     public void CreateNewCampaign(String uname, String pass) {
     	home=SignIn(uname,pass);
        //camp=home.ViewFirstCampaign();
@@ -48,7 +50,7 @@ public class IPTest1 extends BaseTest{
     	//camp.SubmitNewIdea("Idea for test automation tool", false);
     	//camp.SubmitNewIdea("Private idea for test automation tool", true);
 
-   }
+   }*/
     
 /*    @Test(dataProvider="Administrator",dataProviderClass=DataproviderClass.class)
     public void RunIPTests2(String uname, String pass) {

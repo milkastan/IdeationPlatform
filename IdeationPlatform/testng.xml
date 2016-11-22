@@ -1,25 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="IDETEST">
-<!--  <test name="ICBTests">
-    <classes>
-      <class name="tests.OpenPagesSysAdmin"/>
-      <class name="tests.OpenPagesCC"/>
-      <class name="tests.OpenPagesUser"/>
-      <class name="tests.OpenPagesExternalUser"/>
-      <class name="tests.ManageCampaign"/>      
-    </classes>
-  </test> <!-- Test -->
-  
-    <test name="AZURETests">
-    <classes>
-      <class name="tests.AZOpenPagesSysAdmin"/>
-      <class name="tests.AZOpenPagesCC"/>
-      <class name="tests.AZOpenPagesUser"/>
-      <class name="tests.AZManageCampaign"/>      
-    </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+<suite name="Suite">
+<!--     <test name="TestICBAZure1">
+      <parameter name="uname" value ="saicbaz" />
+      <parameter name="pass" value ="123456" />
+       <classes>
+          <class name="tests.AZOpenPagesSysAdmin"/> 
+       </classes>
+     </test> 
+     <test name="TestICBAZure2">
+      <parameter name="uname" value ="icbazcc" />
+      <parameter name="pass" value ="123456" />
+       <classes>
+          <class name="tests.AZOpenPagesCC"/> 
+       </classes>
+     </test> 
+     <test name="TestICBAZure3">
+      <parameter name="uname" value ="icbazuser1" />
+      <parameter name="pass" value ="123456" />
+       <classes>
+          <class name="tests.AZOpenPagesUser"/>
+       </classes>
+     </test> 
+     <test name="TestICBAZure4">
+      <parameter name="uname" value ="icbazextuser1" />
+      <parameter name="pass" value ="123456" />
+       <classes>
+          <class name="tests.AZOpenPagesExternalUser"/>
+       </classes>
+     </test>  -->
+    <test name="TestICBAZure5">
+      <parameter name="uname" value ="saicbaz" />
+      <parameter name="pass" value ="123456" />
+       <classes>
+          <class name="tests.AZManageCampaign"/>
+       </classes>
+     </test> 
+   <test name="TestICBAZure6">
+      <parameter name="uname" value ="saicbaz" />
+      <parameter name="pass" value ="123456" />
+       <classes>
+          <class name="tests.AZManageIdeas"/> 
+       </classes>
+     </test> 
 
-
-
+ </suite> <!-- Suite -->

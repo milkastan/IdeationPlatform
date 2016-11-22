@@ -12,7 +12,7 @@ public class AZOpenPagesUser extends BaseTest{
 			PrintCurrentDateTime();
 	    	System.out.println("Ideation Platform Azure - Open all pages as User!");
 	    	System.out.println("--------------------------------------------");
-	    	navigatetoIdeation ();
+	    	navigatetoIdeationICBAZ();
 	    	//ResizeBrowserWindow(760, 1280);
 	     }
 		
@@ -21,6 +21,7 @@ public class AZOpenPagesUser extends BaseTest{
 	    	System.out.println("Finished Ideation Platform Azure test!");
 	    	PrintCurrentDateTime();
 	    	System.out.println("--------------------------------");
+	    	QuitBrowser();
 	    }
 	    
 	    @Test(dataProvider="AZUser1",dataProviderClass=DataproviderClass.class)
@@ -50,6 +51,6 @@ public class AZOpenPagesUser extends BaseTest{
 	    	prof=home.SelectUserProfile();
 	    	prof.PrintUserDashboardInfo();
 	    	prof.SelectIdeaCommentsTAB(1);
-	    	//prof.SelectIdeaCommentsTAB(0);
+	    	prof.OpenEditMyProfile();
 	     }
 }
