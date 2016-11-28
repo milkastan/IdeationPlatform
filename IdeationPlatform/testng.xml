@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-<!--     <test name="TestICBAZure1">
+    <test name="TestICBAZure1">
       <parameter name="uname" value ="saicbaz" />
       <parameter name="pass" value ="123456" />
        <classes>
@@ -28,7 +28,7 @@
        <classes>
           <class name="tests.AZOpenPagesExternalUser"/>
        </classes>
-     </test>  -->
+     </test> 
     <test name="TestICBAZure5">
       <parameter name="uname" value ="saicbaz" />
       <parameter name="pass" value ="123456" />
