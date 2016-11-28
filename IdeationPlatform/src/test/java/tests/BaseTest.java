@@ -34,7 +34,7 @@ public class BaseTest {
     Ideas		     ide;
     
     ExcelDataConfig azcamps = new ExcelDataConfig("D:\\00-DISK-D\\WebDriver PXC Projects\\IdeationLocal\\IdeationPlatform\\AZCampaigns.xlsx"); 
-    ExcelDataConfig camps = new ExcelDataConfig("D:\\00-DISK-D\\WebDriver PXC Projects\\IdeationLocal\\deationPlatform\\campaigns.xlsx"); 	 
+    ExcelDataConfig camps = new ExcelDataConfig("D:\\00-DISK-D\\WebDriver PXC Projects\\IdeationLocal\\IdeationPlatform\\campaigns.xlsx"); 	 
     ExcelDataConfig users = new ExcelDataConfig("D:\\00-DISK-D\\WebDriver PXC Projects\\IdeationLocal\\IdeationPlatform\\UsersData.xlsx");
        
    
