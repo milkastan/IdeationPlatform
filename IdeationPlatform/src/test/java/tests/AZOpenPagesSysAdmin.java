@@ -25,7 +25,7 @@ public class AZOpenPagesSysAdmin extends BaseTest{
     }
     
     @Test(dataProvider="AZSA1",dataProviderClass=DataproviderClass.class)
-    public void CreateNewCampaign(String uname, String pass) {
+    public void OpenPagesSysAdmin(String uname, String pass) {
     	home=SignIn(uname,pass);
     	//print all visible menus for user
     	home.PrintAllMenuItems();

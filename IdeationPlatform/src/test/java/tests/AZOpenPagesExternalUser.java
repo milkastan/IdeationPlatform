@@ -24,7 +24,7 @@ public class AZOpenPagesExternalUser extends BaseTest{
     	QuitBrowser();
     }
     
-    @Test(dataProvider="AZExtUser1",dataProviderClass=DataproviderClass.class)
+    @Test(dataProvider="AZExtUser",dataProviderClass=DataproviderClass.class)
     public void CreateNewCampaign(String uname, String pass) {
     	home=SignIn(uname,pass);
     	//print all visible menus for user

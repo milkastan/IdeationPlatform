@@ -24,7 +24,8 @@ public class Ideas extends Base{
 	WebElement FollowIdea;
 	@FindBy(how=How.ID, using="MainCT_divMoveIdea")
 	WebElement MoveIdea;
-	@FindBy(how=How.XPATH, using="//div[@id='MainCT_divMoveIdea']/following-sibling::div[@class='custom_cell']")
+	//@FindBy(how=How.XPATH, using="//div[@id='MainCT_divMoveIdea']/following-sibling::div[@class='custom_cell']")
+	@FindBy(how=How.ID, using="MainCT_hlnkCampaign")
 	WebElement GoToCampaign;
 	//Export Idea to excel
 	@FindBy(how=How.ID, using="MainCT_hlnkExportIdea")

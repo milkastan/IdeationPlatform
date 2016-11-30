@@ -56,10 +56,10 @@ public class DataproviderClass {
 			};
      }
 	
-	@DataProvider(name="AZExtUser1")
+	@DataProvider(name="AZExtUser")
 	public  static Object[][]  getAZExtUser1(){
 		return new Object[][] { 
-				{"icbazextuser1","123456"}  
+				{"jimext","123456"}  
 			};
      }
 	
