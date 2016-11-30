@@ -8,7 +8,7 @@
           <class name="tests.AZOpenPagesSysAdmin"/> 
        </classes>
      </test> 
-<!--      <test name="TestICBAZure2">
+     <test name="TestICBAZure2">
       <parameter name="uname" value ="icbazcc" />
       <parameter name="pass" value ="123456" />
        <classes>
@@ -23,7 +23,7 @@
        </classes>
      </test> 
      <test name="TestICBAZure4">
-      <parameter name="uname" value ="icbazextuser1" />
+      <parameter name="uname" value ="nik" />
       <parameter name="pass" value ="123456" />
        <classes>
           <class name="tests.AZOpenPagesExternalUser"/>
@@ -42,6 +42,6 @@
        <classes>
           <class name="tests.AZManageIdeas"/> 
        </classes>
-     </test>  -->
+     </test> 
 
  </suite> <!-- Suite -->
